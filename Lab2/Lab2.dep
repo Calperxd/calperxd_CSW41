@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <fileVersion>5</fileVersion>
+    <fileChecksum>1990170403</fileChecksum>
+    <configuration>
+        <name>Debug</name>
+        <outputs>
+            <file>$PROJ_DIR$\Lab2_src\cmsis_compiler.h</file>
+            <file>$PROJ_DIR$\Lab2_src\core_cm4.h</file>
+            <file>$PROJ_DIR$\Lab2_src\cmsis_iccarm.h</file>
+            <file>$PROJ_DIR$\Lab2_src\system_TM4C1294.h</file>
+            <file>$PROJ_DIR$\Lab2_src\cmsis_version.h</file>
+            <file>$PROJ_DIR$\Lab2_src\TM4C1294NCPDT.h</file>
+            <file>$PROJ_DIR$\Lab2_src\main.cpp</file>
+            <file>$PROJ_DIR$\Lab2_src\system_TM4C1294.c</file>
+            <file>$PROJ_DIR$\Lab2_src\blinky.c</file>
+            <file>$PROJ_DIR$\Lab2_src\startup_ewarm.c</file>
+        </outputs>
+        <forcedrebuild>
+            <name>[REBUILD_ALL]</name>
+        </forcedrebuild>
+    </configuration>
+    <configuration>
+        <name>Release</name>
+        <outputs />
+        <forcedrebuild>
+            <name>[MULTI_TOOL]</name>
+            <tool>ILINK</tool>
+        </forcedrebuild>
+    </configuration>
+</project>

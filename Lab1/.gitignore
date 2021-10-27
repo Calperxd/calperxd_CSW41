@@ -1,0 +1,13 @@
+# Folders
+settings
+Debug
+.ssh
+../../.ssh
+
+# Files
+*.o
+*.a
+*.bin
+*.map
+*.dep
+*.ewp
