@@ -52,12 +52,13 @@ Note que até o momento ainda não fizemos nenhuma implementação, esta etapa, 
 Seguindo ARM Architecture Procedure Call Standard sabemos que os 3 primeiros parâmetros são importantes para controle do algoritmo pois na prática apenas o endereço do primeiro elemento é importante, para verificar como a matriz se organiza na memória foi feito uma pequena verificação na IDE da IAR, opção TI Stellaris>Memory Configuration podemos ver a janela abaixo como a memória está se organizando, isso não é tão importante quando se conhece o comportamento da linguagem C, mas apenas para confirmar que a palavra const coloca as variáveis disponíveis na região de memória flash, como pode ser visto na imagem abaixo.
 
 <figure>
-  <img src="![image](https://user-images.githubusercontent.com/48101913/139188743-fe278cb3-19d3-4783-828b-4b486b9edc40.png)">
+  <img src="https://user-images.githubusercontent.com/48101913/139188743-fe278cb3-19d3-4783-828b-4b486b9edc40.png)">
 </figure>
 
 <figure>
-  <img src="![image](https://user-images.githubusercontent.com/48101913/139188973-c3207b85-2252-4925-8183-d97d695135ea.png)">
+  <img src="https://user-images.githubusercontent.com/48101913/139188973-c3207b85-2252-4925-8183-d97d695135ea.png">
 </figure>
+
 ## Referências
 
 1. IAR Assembler User Guide - https://wwwfiles.iar.com/arm/webic/doc/EWARM_AssemblerReference.ENU.pdf
