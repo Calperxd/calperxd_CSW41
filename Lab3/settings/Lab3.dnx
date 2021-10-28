@@ -55,10 +55,10 @@
     <LmiFtdiDriver>
         <LMIFTDIserialNo>0F00BE93</LMIFTDIserialNo>
         <LMIFTDIfoundProbes />
-        <LeaveTargetRunning>_ 0</LeaveTargetRunning>
-        <CStepIntDis>_ 0</CStepIntDis>
         <LmiFtdiResetStyle>0</LmiFtdiResetStyle>
         <LmiFtdiResetStrategy>1</LmiFtdiResetStrategy>
+        <LeaveTargetRunning>_ 0</LeaveTargetRunning>
+        <CStepIntDis>_ 0</CStepIntDis>
     </LmiFtdiDriver>
     <DebugChecksum>
         <Checksum>945745326</Checksum>
@@ -93,10 +93,10 @@
         <Category>_ 0</Category>
     </LogFile>
     <DisassembleMode>
-        <mode>0</mode>
+        <mode>2</mode>
     </DisassembleMode>
     <Breakpoints2>
-        <Bp0>_ 1 "EMUL_CODE" "{$PROJ_DIR$\histogram.s}.8.1" 0 0 1 "" 0 "" 0</Bp0>
+        <Bp0>_ 1 "EMUL_CODE" "{$PROJ_DIR$\histogram.s}.20.1" 0 0 1 "" 0 "" 0</Bp0>
         <Count>1</Count>
     </Breakpoints2>
     <Aliases>
