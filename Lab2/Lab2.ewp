@@ -335,8 +335,8 @@
                 </option>
                 <option>
                     <name>CCIncludePath2</name>
-                    <state>$PROJ_DIR$\..\..\TivaWare</state>
-                    <state>$PROJ_DIR$\..\..\TivaWare\driverlib</state>
+                    <state>$PROJ_DIR$\..\..\TivaWare_C_Series-2.2.0.295</state>
+                    <state>$PROJ_DIR$\..\..\TivaWare_C_Series-2.2.0.295\driverlib</state>
                 </option>
                 <option>
                     <name>CCStdIncCheck</name>
@@ -793,7 +793,7 @@
                 </option>
                 <option>
                     <name>IlinkAdditionalLibs</name>
-                    <state>$PROJ_DIR$\..\..\TivaWare\driverlib\ewarm\Exe\driverlib.a</state>
+                    <state>$PROJ_DIR$\..\..\TivaWare_C_Series-2.2.0.295\driverlib\ewarm\Exe\driverlib.a</state>
                 </option>
                 <option>
                     <name>IlinkOverrideProgramEntryLabel</name>

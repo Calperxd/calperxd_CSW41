@@ -11,9 +11,9 @@ C:\Users\Gabriel Calper\OneDrive\UTFPR\9 semestre\Sistemas-Embarcados-CSW41\calp
 -I
 C:\Users\Gabriel Calper\OneDrive\UTFPR\9 semestre\Sistemas-Embarcados-CSW41\calperxd_CSW41\Lab2\Lab2_src
 -I
-C:\Users\Gabriel Calper\OneDrive\UTFPR\9 semestre\Sistemas-Embarcados-CSW41\calperxd_CSW41\Lab2\..\..\TivaWare\
+C:\Users\Gabriel Calper\OneDrive\UTFPR\9 semestre\Sistemas-Embarcados-CSW41\calperxd_CSW41\Lab2\..\..\TivaWare_C_Series-2.2.0.295\
 -I
-C:\Users\Gabriel Calper\OneDrive\UTFPR\9 semestre\Sistemas-Embarcados-CSW41\calperxd_CSW41\Lab2\..\..\TivaWare\driverlib\
+C:\Users\Gabriel Calper\OneDrive\UTFPR\9 semestre\Sistemas-Embarcados-CSW41\calperxd_CSW41\Lab2\..\..\TivaWare_C_Series-2.2.0.295\driverlib\
 -I
 C:\Program Files\IAR Systems\Embedded Workbench 9.0\arm\inc\c\aarch32
 -I
@@ -21,9 +21,9 @@ C:\Program Files\IAR Systems\Embedded Workbench 9.0\arm\inc
 -I
 C:\Program Files\IAR Systems\Embedded Workbench 9.0\arm\inc\c
 -I
-C:\Users\Gabriel Calper\OneDrive\UTFPR\9 semestre\Sistemas-Embarcados-CSW41\TivaWare
+C:\Users\Gabriel Calper\OneDrive\UTFPR\9 semestre\Sistemas-Embarcados-CSW41\TivaWare_C_Series-2.2.0.295
 -I
-C:\Users\Gabriel Calper\OneDrive\UTFPR\9 semestre\Sistemas-Embarcados-CSW41\TivaWare\driverlib
+C:\Users\Gabriel Calper\OneDrive\UTFPR\9 semestre\Sistemas-Embarcados-CSW41\TivaWare_C_Series-2.2.0.295\driverlib
 -D__CHAR_BITS__=8
 -D__CHAR_MAX__=0xff
 -D__CHAR_MIN__=0

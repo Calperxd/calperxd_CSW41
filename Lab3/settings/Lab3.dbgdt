@@ -216,7 +216,7 @@
             <IarPane-34092>
                 <expressions>
                     <item>len</item>
-                    <item></item>
+                    <item />
                 </expressions>
                 <col-names>
                     <item>Expression</item>
@@ -247,7 +247,7 @@
             </BasePane-34097>
             <IarPane-34097>
                 <expressions>
-                    <item></item>
+                    <item />
                 </expressions>
                 <col-names>
                     <item>Expression</item>

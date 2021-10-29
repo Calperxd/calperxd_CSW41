@@ -7,7 +7,17 @@
         <outputs>
             <file>$PROJ_DIR$\histogram.s</file>
             <file>$PROJ_DIR$\main.cpp</file>
+            <file>$PROJ_DIR$\Debug\Obj\main.o</file>
         </outputs>
+        <file>
+            <name>$PROJ_DIR$\main.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 2</file>
+                </tool>
+            </outputs>
+        </file>
         <forcedrebuild>
             <name>[REBUILD_ALL]</name>
         </forcedrebuild>
