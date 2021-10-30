@@ -4,12 +4,7 @@
 - Professor: Douglas Paulo Bertrand Renaux
 - Email: douglasrenaux@professores.utfpr.edu.br
 - Aluno: Gabriel Alexandre Linhares Calper Seabra
-- Email: gabrielseabra@alunos.utfpr.edu.br
-
-<style>
-.red {color: red}
-</style>
-<p class="red">red text</p>
+- Email: gabrielseabra@alunos.utfpr.edu.brd
 
 
 # Lab3
