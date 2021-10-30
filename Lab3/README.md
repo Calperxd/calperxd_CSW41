@@ -6,6 +6,10 @@
 - Aluno: Gabriel Alexandre Linhares Calper Seabra
 - Email: gabrielseabra@alunos.utfpr.edu.br
 
+<style>
+.red {color: red}
+</style>
+<p class="red">red text</p>
 
 
 # Lab3
