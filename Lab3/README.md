@@ -85,8 +85,63 @@ A função que chama o gerador de histograma está sendo explicada no quadro aba
  * @return uint16_t retorna zero se o histograma não é suportado pela função
  */
 extern uint16_t EightBitHistogram(uint16_t width, uint16_t height, const uint8_t * p_image, uint16_t * p_histogram);
-
 ```
+
+
+
+```asm
+
+  PUBLIC EightBitHistogram                        ;Torna a fun??o acess?vel fora de histogram.s
+
+  SECTION .text : CODE(2)                         ;Define uma sess?o e alinhamento
+  THUMB                                           ;Instru??es do tipo thumb
+
+EightBitHistogram         PUSH {R4-R12, LR}              ; Salvando contexto
+  MUL R0,R0,R1                   ;Numero de elementos a serem processados
+  MOV R12, #65536                ;R12 guarda o valor m?ximo de 64k
+  CMP R0, R12                    ;Compara se o tamanho nao excede o tamanho max
+  MOV R12, #0
+  IT HS
+  BHS Return                     ; Caso seja maior colaca 0 no R0 e retorna para o fluxo do programa
+  BL  MemInit                    ; Inicia a area de memoria a ser usada
+  MOV R4,#0
+iter                             ; Iterar a matriz
+  LDRB  R1,[R2]                  ; Carrega posicao I da matriz em R1
+  ADD R3,R1                      ; Offset no endereco base que está em R3
+  BL Sum                         ; STRB R1,[R3]                   ; Guarda posicao I da matriz na memoria
+  SUB R3,R1                      ; Retira o offset e volta para o endereco base
+  ADD R2,R2,#1                   ; Contador de endereco flash
+  ADD R5,R5,#1                   ; Contador de iteracao
+  CMP R5,R0
+  BNE iter
+  POP {R4-R12, PC}               ;Voltando para o contexto
+  
+
+Return                           ;Valor acima do requisito de 64k retorna para a funcao main indicando 0 como retorno
+  MOV R0,#0
+  POP {R4-R12, PC}               ;Voltando para o contexto
+
+
+Sum
+  LDRH R6,[R3]                   ; Carrega em R4 o valor que existe naquela posicao de memoria
+  ADD R6,R6,#1                   ; R4 = R4 + 1
+  STRH R6,[R3]
+  BX LR
+ 
+
+MemInit                         ; Funcao para dar init na memoria
+  STRH  R11,[R3,R8]             ; Zera area de memoria
+  ADD R8,#2                     ;´Iterador de memoria
+  CMP R8,#510                   
+  BNE MemInit                   ; Ate contar 255
+  MOV R8,#0                     ; Zera R8
+  BX LR
+```
+
+
+
+
+
 
 # Referências
 
