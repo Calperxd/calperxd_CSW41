@@ -12,7 +12,7 @@
 Esse laboratório tem como objetivo elaborar uma rotina em assembly que será chamado em um programa C++ . Essa rotina será capaz de gerar um histograma de uma imagem em tons de cinza, para isso será necessário consultar o AAPPCS que
 
 # O histograma
-Dado que os dois últimos laboratórios já foram bem introdutório no que tange o assunto de configuração ambiente, este laboratório a parte de configuração do ambiente será negligenciada para melhor aproveitamento de conteúdo. Geralmente quando se tem problemas a serem resolvidos, tendemos a quebrar o problema em pequenos pedaços, isso facilita a chegarmos em uma solução relativamente boa, para este laboratório o primeiro passo, apesar de extremamente básico, foi criar uma rotina que seja possível ser chamada para em uma função, abaixo a estrutura do diretório do projeto, o arquivo histogram.s e main.cpp respectivamente.
+Dado que os dois últimos laboratórios já foram bem introdutório no que tange o assunto de configuração de ambiente, este laboratório a parte de configuração do ambiente será negligenciada para melhor aproveitamento de conteúdo. Geralmente quando se tem problemas a serem resolvidos, tendemos a quebrar o problema em pequenos pedaços, isso facilita a chegarmos em uma solução relativamente boa, para este laboratório o primeiro passo, apesar de extremamente básico, foi criar uma rotina que seja possível ser chamada para em uma função, abaixo a estrutura do diretório do projeto, o arquivo histogram.s e main.cpp respectivamente.
 
 ```shell
   $ Lab3
