@@ -73,7 +73,7 @@ Dada essa pequena introdução sobre armazenamento de variáveis iremos discorre
 
 A função que chama o gerador de histograma está sendo explicada no quadro abaixo.
 
-´´´cpp
+```cpp
 
 /**
  * @brief 
@@ -86,7 +86,7 @@ A função que chama o gerador de histograma está sendo explicada no quadro aba
  */
 extern uint16_t EightBitHistogram(uint16_t width, uint16_t height, const uint8_t * p_image, uint16_t * p_histogram);
 
-´´´
+```
 
 # Referências
 
