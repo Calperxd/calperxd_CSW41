@@ -148,10 +148,13 @@ MemInit                         ; Funcao para dar init na memoria
 Esta é a função propriamente dita, ela é responsavel por salvar o contexto e verificar se o número de elementos é maior que o que 65k, caso o número de elementos exceda o limite permitido, ela pede para o programa desviar para o label ** Return **  que coloca 0 no Registrador R0 (indicação de erro) e restaura o contexto. Caso a função esteja dentro do limite permmitido de elementos, ela pede para a função desviar para MemInit, que será explicada logo em seguida.
 
 #### MemInit 
-Esta parte do código é responsável por inicializar a região de memória que será usada, isso é importante para que nenhum lixo de memória seja contabilizado na hora de gerar o histograma a inicialiação se conporta conforme o gif mostrado abaixo, zerando de 2 em 2 bytes
+Esta parte do código é responsável por inicializar a região de memória que será usada, isso é importante para que nenhum lixo de memória seja contabilizado na hora de gerar o histograma a inicialiação se conporta conforme o gif mostrado abaixo, zerando de 2 em 2 bytes.
+
+#### MemInit 
+Logo após a inicialização de memória, chamamos a função que irá iterar os Bytes do histograma esse trecho de código usa a instrução ** LDRB ** com essa justificativa, para que seja apenas carregado de 1 em 1 byte já que nosso histograma é de 8 bits. Dessa forma
 
 <figure>
-  <img src="https://user-images.githubusercontent.com/48101913/139925755-00719d17-a350-4994-8951-4a1f9cb56f9a.gif">
+  <img src="https://user-images.githubusercontent.com/48101913/139927141-7621bcf1-c992-4b70-a79e-1bf0906bcb0f.gif">
 </figure>
 
 
