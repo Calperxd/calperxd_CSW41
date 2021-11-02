@@ -12,7 +12,7 @@
 Esse laboratório tem como objetivo elaborar uma rotina em assembly que será chamado em um programa C++ . Essa rotina será capaz de gerar um histograma de uma imagem em tons de cinza, para isso será necessário consultar o AAPPCS que
 
 # O histograma
-Dado que os dois últimos laboratórios já foram bem introdutórios no que tange o assunto de configuração de ambiente, portanto essa parte será negligenciada, para melhor aproveitamento de conteúdo. Geralmente quando se tem problemas a serem resolvidos, tendemos a quebrar o problema em pequenos pedaços, isso facilita na solução do problema além de simplificar as etapas de desemvolvimento, para este laboratório o primeiro passo, apesar de extremamente básico, foi criar uma rotina que seja possível ser chamada em código C, abaixo a estrutura do diretório do projeto, o arquivo histogram.s e main.cpp respectivamente.
+Dado que nos dois últimos laboratórios já foram bem introdutórios no que tange o assunto de configuração de ambiente, portanto essa parte será negligenciada neste lab, para melhor aproveitamento de conteúdo. Geralmente quando se tem problemas a serem resolvidos, tendemos a quebrar o problema em pequenos pedaços, isso facilita na solução do problema além de simplificar as etapas de desemvolvimento, para este laboratório o primeiro passo, apesar de extremamente básico, foi criar uma rotina que seja possível ser chamada em código C, abaixo a estrutura do diretório do projeto, o arquivo histogram.s e main.cpp respectivamente.
 
 ```shell
   $ Lab3
@@ -49,7 +49,7 @@ int main()
 ```
 
 Note que até o momento ainda não fizemos nenhuma implementação, nesta etapa, é apenas uma etapa para a ambientação de escrever códigos em assembly e chamá-los em C/C++.
-Seguindo ARM Architecture Procedure Call Standard sabemos que os 3 primeiros parâmetros são importantes para controle do algoritmo pois na prática apenas o endereço do primeiro elemento e o número de elementos(Linhas vezes Colunas) é importante, para verificar como a matriz se organiza na memória foi feito uma pequena verificação na IDE da IAR, opção TI Stellaris>Memory Configuration podemos ver a janela abaixo como a memória está se organizando, isso não é tão importante quando se conhece o comportamento da linguagem C, mas apenas para confirmar que a palavra const coloca as variáveis disponíveis na região de memória flash, como pode ser visto na imagem abaixo.
+Seguindo ARM Architecture Procedure Call Standard, para verificar como a matriz se organiza na memória foi feito uma pequena verificação na IDE da IAR, opção TI Stellaris>Memory Configuration podemos ver a janela abaixo como a memória é organizada, isso não é tão importante quando se conhece o comportamento da linguagem C, mas apenas para confirmar que a palavra const coloca as variáveis disponíveis na região de memória flash, como pode ser visto na imagem abaixo.
 
 
 <figure>
@@ -81,19 +81,20 @@ A função que chama o gerador de histograma está sendo explicada no quadro aba
  * @param[in] height Dimensão de linhas da matriz
  * @param[in] p_image endereço da matriz
  * @param[out] p_histogram endereço onde será armazenado o histogramas
- * @return uint16_t retorna zero se o histograma não é suportado pela função
+ * @return uint16_t retorna zero se o histograma não é suportado pela função ou endereço caso seja suportado
  */
-extern uint16_t EightBitHistogram(uint16_t width, uint16_t height, const uint8_t * p_image, uint16_t * p_histogram);
+extern uint16_t *EightBitHistogram(uint16_t width, uint16_t height, const uint8_t * p_image, uint16_t * p_histogram);
 ```
 
+Para melhor entendimento o programa assembly foi dividido em pequenos pedaços de códigos que fazem algo muito específico , abaixo uma descrição de cada label e sua respectiva função, este processo é necessário pois um código assembly é muito dificil de ser lido e para evitar desgaste no entendimento da implementação em assembly, explicarei em uma linguagem de maior nível o que cada label faz.
 
 
 ```asm
 
-  PUBLIC EightBitHistogram                        ;Torna a fun??o acess?vel fora de histogram.s
+  PUBLIC EightBitHistogram                        ;Torna a funcao acessivel fora de histogram.s
 
-  SECTION .text : CODE(2)                         ;Define uma sess?o e alinhamento
-  THUMB                                           ;Instru??es do tipo thumb
+  SECTION .text : CODE(2)                         ;Define uma sessao e alinhamento
+  THUMB                                           ;Instrucoes do tipo thumb
 
 EightBitHistogram         PUSH {R4-R12, LR}              ; Salvando contexto
   MUL R0,R0,R1                   ;Numero de elementos a serem processados
@@ -104,15 +105,18 @@ EightBitHistogram         PUSH {R4-R12, LR}              ; Salvando contexto
   BHS Return                     ; Caso seja maior colaca 0 no R0 e retorna para o fluxo do programa
   BL  MemInit                    ; Inicia a area de memoria a ser usada
   MOV R4,#0
+  ADD R4, R0, R2                 ; Endereco final da iteracao na flash
 iter                             ; Iterar a matriz
   LDRB  R1,[R2]                  ; Carrega posicao I da matriz em R1
   ADD R3,R1                      ; Offset no endereco base que está em R3
-  BL Sum                         ; STRB R1,[R3]                   ; Guarda posicao I da matriz na memoria
+  ADD R3,R1                      ; Offset no endereco base que está em R3
+  BL Sum                         ; Guarda posicao I da matriz na memoria
   SUB R3,R1                      ; Retira o offset e volta para o endereco base
-  ADD R2,R2,#1                   ; Contador de endereco flash
-  ADD R5,R5,#1                   ; Contador de iteracao
-  CMP R5,R0
+  SUB R3,R1                      ; Retira o offset e volta para o endereco base
+  ADD R2,R2,#1                   ; Percorrer os 19200 elemento na flash
+  CMP R2,R4                      ; Compara se já chegou ao final da flash
   BNE iter
+  MOV R0,R3
   POP {R4-R12, PC}               ;Voltando para o contexto
   
 
@@ -123,18 +127,22 @@ Return                           ;Valor acima do requisito de 64k retorna para a
 
 Sum
   LDRH R6,[R3]                   ; Carrega em R4 o valor que existe naquela posicao de memoria
-  ADD R6,R6,#1                   ; R4 = R4 + 1
+  ADD R6,R6,#1                   ; R4 = R4 + 2
   STRH R6,[R3]
+  MOV R6,#0                      ; Zera o valor de R6
   BX LR
  
 
 MemInit                         ; Funcao para dar init na memoria
-  STRH  R11,[R3,R8]             ; Zera area de memoria
-  ADD R8,#2                     ;´Iterador de memoria
-  CMP R8,#510                   
-  BNE MemInit                   ; Ate contar 255
-  MOV R8,#0                     ; Zera R8
+  ADD R3, R3,#2
+  STRH  R11,[R3]                ; Zera area de memoria
+  ADD R8,#1                     ;´Iterador de memoria
+  CMP R8,#512                   
+  BNE MemInit
+  MOV R3,R4                     ; R3 recebe o endereco da variavel
   BX LR
+
+  END
 ```
 
 
