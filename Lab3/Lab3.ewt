@@ -2843,6 +2843,9 @@
         <name>$PROJ_DIR$\histogram.s</name>
     </file>
     <file>
+        <name>$PROJ_DIR$\image.h</name>
+    </file>
+    <file>
         <name>$PROJ_DIR$\main.cpp</name>
     </file>
 </project>
