@@ -205,6 +205,21 @@ int main()
 }
 ```
 
+Para conferir o visual studio code foi usado, note que na imagem abaixo ele contabiliza um vetor com 19200 pixels.
+
+<figure>
+  <img src="https://user-images.githubusercontent.com/48101913/139941938-6a4f7284-b6be-4fa4-9a92-385f8e70c8c1.png">
+</figure>
+
+Agora vamos conferir a contagem de algun pixels por amostragem mesmo, nesse caso abaixo o 0x13 foi conferido no vscode e no terminal do IAR.
+
+![image](https://user-images.githubusercontent.com/48101913/139942200-e613235e-55e6-4ecf-8eb7-94c3171992f2.png)
+
+A imagem acima mostra que existem 402 pixels de tonalidade 0x13 a nosso código também mostra isso
+
+![image](https://user-images.githubusercontent.com/48101913/139942867-1650965c-3844-4956-8c56-53a19ce0c7cb.png)
+
+
 
 # Referências
 
