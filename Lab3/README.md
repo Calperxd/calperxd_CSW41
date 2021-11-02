@@ -144,7 +144,7 @@ MemInit                         ; Funcao para dar init na memoria
 
   END
 ```
-## EightBitHistogram         
+#### EightBitHistogram         
 Esta é a função propriamente dita, ela é responsavel por salvar o contexto e verificar se o número de elementos é maior que o que 65k, caso o número de elementos exceda o limite permitido, ela pede para o programa desviar para o label ** Return **  que coloca 0 no Registrador R0 (indicação de erro) e restaura o contexto. Caso a função esteja dentro do limite permmitido de elementos, ela pede para a função desviar para MemInit, que será explicada logo em seguida.
 
 
