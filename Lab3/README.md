@@ -4,7 +4,7 @@
 - Professor: Douglas Paulo Bertrand Renaux
 - Email: douglasrenaux@professores.utfpr.edu.br
 - Aluno: Gabriel Alexandre Linhares Calper Seabra
-- Email: gabrielseabra@alunos.utfpr.edu.brd
+- Email: gabrielseabra@alunos.utfpr.edu.br
 
 
 # Lab3
@@ -147,7 +147,12 @@ MemInit                         ; Funcao para dar init na memoria
 #### EightBitHistogram         
 Esta é a função propriamente dita, ela é responsavel por salvar o contexto e verificar se o número de elementos é maior que o que 65k, caso o número de elementos exceda o limite permitido, ela pede para o programa desviar para o label ** Return **  que coloca 0 no Registrador R0 (indicação de erro) e restaura o contexto. Caso a função esteja dentro do limite permmitido de elementos, ela pede para a função desviar para MemInit, que será explicada logo em seguida.
 
+#### MemInit 
+Esta parte do código é responsável por inicializar a região de memória que será usada, isso é importante para que nenhum lixo de memória seja contabilizado na hora de gerar o histograma a inicialiação se conporta conforme o gif mostrado abaixo, zerando de 2 em 2 bytes
 
+<figure>
+  <img src="https://user-images.githubusercontent.com/48101913/139925755-00719d17-a350-4994-8951-4a1f9cb56f9a.gif">
+</figure>
 
 
 
