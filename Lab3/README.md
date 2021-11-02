@@ -127,15 +127,15 @@ Return                           ;Valor acima do requisito de 64k retorna para a
 
 Sum
   LDRH R6,[R3]                   ; Carrega em R4 o valor que existe naquela posicao de memoria
-  ADD R6,R6,#1                   ; R4 = R4 + 2
+  ADD R6,R6,#1                   ; R4 = R4 + 1
   STRH R6,[R3]
   MOV R6,#0                      ; Zera o valor de R6
   BX LR
  
 
 MemInit                         ; Funcao para dar init na memoria
-  ADD R3, R3,#2
   STRH  R11,[R3]                ; Zera area de memoria
+  ADD R3, R3,#2
   ADD R8,#1                     ;´Iterador de memoria
   CMP R8,#512                   
   BNE MemInit
@@ -145,19 +145,28 @@ MemInit                         ; Funcao para dar init na memoria
   END
 ```
 #### EightBitHistogram         
-Esta é a função propriamente dita, ela é responsavel por salvar o contexto e verificar se o número de elementos é maior que o que 65k, caso o número de elementos exceda o limite permitido, ela pede para o programa desviar para o label ** Return **  que coloca 0 no Registrador R0 (indicação de erro) e restaura o contexto. Caso a função esteja dentro do limite permmitido de elementos, ela pede para a função desviar para MemInit, que será explicada logo em seguida.
+Esta é a função propriamente dita, ela é responsavel por salvar o contexto e verificar se o número de elementos é maior que o que 65k, caso o número de elementos exceda o limite permitido, ela pede para o programa desviar para o label **Return**  que coloca 0 no Registrador R0 (indicação de erro) e restaura o contexto. Caso a função esteja dentro do limite permmitido de elementos, ela pede para a função desviar para MemInit, que será explicada logo em seguida.
 
 #### MemInit 
 Esta parte do código é responsável por inicializar a região de memória que será usada, isso é importante para que nenhum lixo de memória seja contabilizado na hora de gerar o histograma a inicialiação se conporta conforme o gif mostrado abaixo, zerando de 2 em 2 bytes.
 
-#### MemInit 
-Logo após a inicialização de memória, chamamos a função que irá iterar os Bytes do histograma esse trecho de código usa a instrução ** LDRB ** com essa justificativa, para que seja apenas carregado de 1 em 1 byte já que nosso histograma é de 8 bits. Dessa forma
+#### Iter 
+Logo após a inicialização de memória, vamos para o label que irá iterar os Bytes do histograma esse trecho de código usa a instrução **LDRB** com essa justificativa, para que seja apenas carregado de 1 em 1 byte já que nosso histograma é de 8 bits.
 
 <figure>
   <img src="https://user-images.githubusercontent.com/48101913/139927141-7621bcf1-c992-4b70-a79e-1bf0906bcb0f.gif">
 </figure>
 
+Os registradores R2 e R3 carregam o endereço da imagem na memória flassh e na memoria RAM respectivamente, para esse exemplo o endereço do primeiro elemento da imagem na memória flash está em 0x0000.0040 e o endereço na memória RAM para o histograma é 0x2000.7FF0 conforme mostra a imagem abaixo.
 
+<figure>
+  <img src="https://user-images.githubusercontent.com/48101913/139929277-e178748e-f899-48c3-834e-104f7e7ccd3b.png">
+</figure>
+
+Como toda imagem é percorrida, lê-se o byte e soma-se ao endereço base, por exemplo, o pixel 0x13 é achado, então soma-se ele ao endereço base, nesse novo endereço serão contabilizadas todas as aparições de 0x13, para fazer essa parte de LDRH e STRH um trecho de código foi escrito (o que possui label **SUM**), para retornar ao endereço base a instrução SUB é chamada duas vezes já que existem alguns pixels que estouram a contagem caso apenas 1 byte fosse alocado, o próprio 0x13 aparece 402 duas vezes isso implica que 8 bits não seria o suficiente para contabilizar tudo.
+
+#### SUM 
+A cada pixel carregado, essa label é chamada, ela é responsável por carregar a contagem do pixel no registrador R6 e somar 1 e colocar novamente na memória RAM.
 
 
 # Referências
