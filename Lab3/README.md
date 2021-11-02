@@ -168,6 +168,43 @@ Como toda imagem é percorrida, lê-se o byte e soma-se ao endereço base, por e
 #### SUM 
 A cada pixel carregado, essa label é chamada, ela é responsável por carregar a contagem do pixel no registrador R6 e somar 1 e colocar novamente na memória RAM.
 
+# Resultado
+
+O código C++ implementado é muito simples, é só um monte ponteiro apontado para regiões de memória e depois iterando a memória, vale lembrar que esse código todo poderia ser substituido por um array de 256 posições e simplesmente passar o endereço da primeira posição, achei melhor assim pois de certa forma eu posso separar melhor as coisas.
+
+``` cpp
+  uint16_t histogram[256];
+  p_hist_result = EightBitHistogram(WIDTH1,HEIGTH1,p_start_image1, &histogram[0]);
+``` 
+O código abaixo mostra que o arquivo que continha a imagem foi transformado em um Header, apenas para tornar o código mais modular.
+
+``` cpp
+#include <stdio.h>
+#include <stdint.h>
+#include <stdlib.h>
+#include "image.h"
+
+
+
+int main()
+{
+  uint16_t histogram;           
+  uint16_t *p_hist;         
+  p_hist = &histogram;
+  
+  uint16_t *p_hist_result;
+  
+  p_hist_result = EightBitHistogram(WIDTH1,HEIGTH1,p_start_image1, &histogram);
+  for(uint16_t i =0; i < 256     ; i = i + 1)
+  {
+    printf("posicao %#04x possui %i  pixels\n",i,p_hist[i]);
+      p_hist[i]=0;
+  }
+  
+  return 0;
+}
+```
+
 
 # Referências
 
