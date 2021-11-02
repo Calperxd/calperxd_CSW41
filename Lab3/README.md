@@ -17,7 +17,8 @@ Dado que nos dois últimos laboratórios já foram bem introdutórios no que tan
 ```shell
   $ Lab3
   .
-  ├── main.cpp          **arquivo que possui função main**
+  ├── main.cpp                 **arquivo que possui função main**
+  ├── image.h                 **arquivo que possui função main**
   └── histogram.s              ** Implementação da função EightBitHistogram**
 ```
 
