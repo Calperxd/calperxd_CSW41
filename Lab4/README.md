@@ -18,6 +18,9 @@ A UART (Universal Asynchronous Receiver-Transmitter) é um modo de transmissão 
 
 Quando parado ou idle o pino está em estado lógico alto.
 
+![image](https://user-images.githubusercontent.com/48101913/140612031-1fe59a79-c0bf-4f1b-ab38-4079b29e7c64.png)
+
+
 Cada transmissão de dados começa com 1 bit de start que é sempre estado lógico baixo.
 
 Cada pacote de dados tem 8 ou 9 bits de tamanho, onde o LSB é sempre o primeiro a ser transferido.
