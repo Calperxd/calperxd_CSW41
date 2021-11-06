@@ -21,6 +21,22 @@ Quando parado ou idle o pino está em estado lógico alto.
 
 ![Shift_Register](https://user-images.githubusercontent.com/48101913/140596381-d1d67cd7-bb42-461d-b5f0-0421640c0b89.gif)
 
+Cada transmissão de dados começa com 1 bit de start que é sempre estado lógico baixo.
+
+Cada pacote de dados tem 8 ou 9 bits de tamanho, onde o LSB é sempre o primeiro a ser transferido.
+
+Cada transmissão de dados termina com um STOP bit que tem sempre estado lógico alto.
+
+Quando não há dados a serem transmitidos, a linha fica em nível lógico alto.
+
+O receptor reconhece a borda de descida do start bit e sincroniza seu clock.
+
+Após 1 ciclo e meio começa a fazer a leitura dos demais bits a cada clock.
+
+Se as frequências do transmissor e do receptor estiverevem perfeitamente sincronizadas, as leituras serão efetuadas exatamente no meio de cada ciclo.
+
+
+
 
 # Conclusão
 
