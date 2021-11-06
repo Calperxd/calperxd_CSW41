@@ -15,11 +15,9 @@ A UART (Universal Asynchronous Receiver-Transmitter) é um modo de transmissão 
 
 #### Funcionamento.
 
-
-Quando parado ou idle o pino está em estado lógico alto.
-
 ![image](https://user-images.githubusercontent.com/48101913/140612031-1fe59a79-c0bf-4f1b-ab38-4079b29e7c64.png)
 
+Quando parado ou idle o pino está em estado lógico alto.
 
 Cada transmissão de dados começa com 1 bit de start que é sempre estado lógico baixo.
 
