@@ -35,11 +35,14 @@ Após 1 ciclo e meio começa a fazer a leitura dos demais bits a cada clock.
 
 Se as frequências do transmissor e do receptor estiverevem perfeitamente sincronizadas, as leituras serão efetuadas exatamente no meio de cada ciclo.
 
-#### O Projeto.
+# O Projeto.
 
 O projeto consite em converter letras maiúsculas e mínúsculas, tanto de maiúscula para minúscula quanto o contrário, para esse projeto usaremos a UART0, e existe uma razão especial para usar ela, ela é mapeada com a interface USB conforme pode ser visto na página 22 do **Tiva C Series TM4C1294 Connected LaunchPad Evaluation Kit (Rev. C).**
 
 Para converter uma letra maiúscula para minúscula podemos usar a tabela ASCII para ver o como estão dispostas as letras e quais suas representações em números decimais.
+
+![image](https://user-images.githubusercontent.com/48101913/141230179-ca969428-6314-4525-9356-663152b9f1a4.png)
+
 
 
 # Conclusão
