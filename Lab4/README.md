@@ -13,7 +13,7 @@ Esse labaratório tem como objetivo configurar a interface UART de forma que sej
 # UART
 A UART (Universal Asynchronous Receiver-Transmitter) é um modo de transmissão serial muito utilizado em sistemas embarcados, ele transmite dados de um microcontrolador para outro ou para um computador podendo utilizar apenas 2 fios RX (Reciever) e TX(Transmitter) além da referêcia. É um sistema full duplex ou seja, pode transmitir e receber ao mesmo tempo.
 
-#### Funcionamento.
+#### Funcionamento da UART.
 
 ![image](https://user-images.githubusercontent.com/48101913/140612031-1fe59a79-c0bf-4f1b-ab38-4079b29e7c64.png)
 
@@ -35,7 +35,11 @@ Após 1 ciclo e meio começa a fazer a leitura dos demais bits a cada clock.
 
 Se as frequências do transmissor e do receptor estiverevem perfeitamente sincronizadas, as leituras serão efetuadas exatamente no meio de cada ciclo.
 
+#### O Projeto.
 
+O projeto consite em converter letras maiúsculas e mínúsculas, tanto de maiúscula para minúscula quanto o contrário, para esse projeto usaremos a UART0, e existe uma razão especial para usar ela, ela é mapeada com a interface USB conforme pode ser visto na página 22 do **Tiva C Series TM4C1294 Connected LaunchPad Evaluation Kit (Rev. C).**
+
+Para converter uma letra maiúscula para minúscula podemos usar a tabela ASCII para ver o como estão dispostas as letras e quais suas representações em números decimais.
 
 
 # Conclusão

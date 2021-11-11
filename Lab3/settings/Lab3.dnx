@@ -61,7 +61,7 @@
         <LmiFtdiResetStrategy>1</LmiFtdiResetStrategy>
     </LmiFtdiDriver>
     <DebugChecksum>
-        <Checksum>4199416137</Checksum>
+        <Checksum>2941183012</Checksum>
     </DebugChecksum>
     <Exceptions>
         <StopOnUncaught>_ 0</StopOnUncaught>
