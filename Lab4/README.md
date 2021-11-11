@@ -48,7 +48,6 @@ O algorítmo consiste em nos seguintes passos.
 1º Checar se é maiúscula ou minúscula.
 2º Somar se maiúscula senão.
 3º Subtrair se for minúscula.
-
 ```
 
 
