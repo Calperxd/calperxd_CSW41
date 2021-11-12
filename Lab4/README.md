@@ -67,10 +67,11 @@ Com o tipo de dado criado um vetor de interrupções é criado, , o que esse tre
 
 ![image](https://user-images.githubusercontent.com/48101913/141420307-8d73a187-4046-4a3d-8342-224e310cb10e.png)
 
-Todas as linhas estão comentadas, com o respectivo periférico, caso não estivesse comentada, você também poderia consultar a ordem no datasheet do chip ** tm4c1293ncpdt **
+Todas as linhas estão comentadas com o respectivo periférico, caso não estivesse comentada, você também poderia consultar a ordem no datasheet do chip **TM4C1294NCPDT** , para alterar a função que representa o handler basta ir na posição do vetor de interrupções e alterar, no meu caso eu irei alterar para MinhaUARTHandle. Essa palavra reservada garante que podemos alterar o funcionamento da função do handler da UART.
 
+![image](https://user-images.githubusercontent.com/48101913/141489623-1f6d41c7-7462-4334-9901-aca392194980.png)
+![image](https://user-images.githubusercontent.com/48101913/141489689-6cf103f3-5dfd-48f7-be0f-dc71e2936677.png)
 
-Um dos requisitos desse projeto é que seja possível alterar a interrupção da UART
 
 # Conclusão
 
