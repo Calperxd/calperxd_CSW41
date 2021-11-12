@@ -72,6 +72,43 @@ Todas as linhas estão comentadas com o respectivo periférico, caso não estive
 ![image](https://user-images.githubusercontent.com/48101913/141489623-1f6d41c7-7462-4334-9901-aca392194980.png)
 ![image](https://user-images.githubusercontent.com/48101913/141489689-6cf103f3-5dfd-48f7-be0f-dc71e2936677.png)
 
+O cerne do algorítmo está no trecho de código abaixo, o resto é apenas configuração de periférico, observe que na pasta do projeto está tudo bem modular, para seja fácil entendido o código
+
+```cpp
+void MinhaUARTHandler(void)
+{
+    uint32_t Status;
+    volatile int32_t caract;
+
+    Status = UARTIntStatus(UART0_BASE, true);                   // Retorna o status da interrupção    
+    UARTIntClear(UART0_BASE, Status);                           // Limpa Flag de interrupção
+    
+    //Verifica se tem algum dado na fifo
+    while(UARTCharsAvail(UART0_BASE))
+    {
+        // Algoritmo de conversao
+        caract = UARTCharGetNonBlocking(UART0_BASE);
+        //maiúsculo para minúsculo
+        if((caract > 64) && (caract < 91))
+        {
+          caract = caract + 32;
+        }else{
+          //minúsculo para maiúsculo
+          if((caract > 96) && (caract < 123))
+          {
+            caract = caract - 32;
+          }  
+        }
+        UARTCharPutNonBlocking(UART0_BASE, caract); // Escreve 
+        GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_0, GPIO_PIN_0);
+        SysCtlDelay(SysClock / (1000 * 3));
+        GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_0, 0);
+    }
+    //zera a variável
+    caract = 0;
+}
+
+```
 
 # Conclusão
 
