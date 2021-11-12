@@ -52,7 +52,24 @@ O algorítmo consiste em nos seguintes passos.
 2º Somar se maiúscula senão.
 3º Subtrair se for minúscula.
 ```
+Para receber os dados da UART uma interrupção de UART será usada, toda vez que houver algum caracter sendo recebido pela UART haverá uma interrupção, para registrar uma interrupção no vetor de interrupção, basta você ir no startup_ewarm.c e mudar o nome da função referente a interrução da UART, note também que existem outra funções que podem ser alteradas, bem como o **__iar_program_start(void) **. A função desse arquivo startup_ewarm.c é bem sugestiva, ele é responsável por declarar algumas funções que serão explicadas logo abaixo.
+O arquivo começa declarando funções que serão usadas, a primeira dela é a ** void ResetISR(void) **, essa função é responsável pelo bootloader do sistema , e basicamente faz duas coisas habilita a unidade de ponto flutuante e chama o **__iar_program_start(void) ** que é de fato a função de bootloader proprietária da IAR, eu particularmente não encontrei a definição da função, mas ela basicamente carrega o programa na memória RAM e ao final chama a famigerada função ** main(void) ** da linguagem C. Outra função interessante para esse momento é a função ** IntDefaultHandler(void) ** , essa função basicamente já descreve o que ela faz, ela é um handler default. mas como assim ? Ok, posso explicar mas vamos por partes.
+![image](https://user-images.githubusercontent.com/48101913/141415103-3b18b0a1-c96b-4f23-9ab4-d1e85749a886.png)
 
+No arquivo ** startup_ewarm.c ** , existe um vetor do tipo uint32_t sendo criado(imagem abaixo) , esse vetor é stack do sistema.
+![image](https://user-images.githubusercontent.com/48101913/141418424-544c5603-6ae4-459c-a667-3b5207530b89.png)
+
+Logo em seguida um tipo de dado é definido, é um union(ou collection do java) significa que aceita os tipos de dados definido na estrutura.
+![image](https://user-images.githubusercontent.com/48101913/141418745-3df07974-f6ca-4101-ba4f-284a09923136.png)
+
+Com o tipo de dado criado um vetor de interrupções é criado, , o que esse trecho de código está fazendo é pegar o endereço da stack do sistema e somando o endereço do vetor de interrupções, note que a palavra const é usada, para que esse vetor seja fixado na memória flash e que depois no bootloader seja possível copiar vetor da memória flash para memória RAM, observe que as três primeiras interrupções registradas são ResetISR, NmiISR e FaultISR, como explicado são as interrupções, o código da FaultISR e NmiISR são simples, apenas executam um loop infinito, evitando que o sistema execute qualquer coisa errada, evidemente essas funções podem ser alteras logo abaixo. Note que a palavra IntDefaultHandler se repete várias vezes e isso acontece pois quando uma interrupção é habilitada, e não possui o nome trocado no seu vetor de interrupções ele chama essa função como default.
+
+![image](https://user-images.githubusercontent.com/48101913/141420307-8d73a187-4046-4a3d-8342-224e310cb10e.png)
+
+Todas as linhas estão comentadas, com o respectivo periférico, caso não estivesse comentada, você também poderia consultar a ordem no datasheet do chip ** tm4c1293ncpdt **
+
+
+Um dos requisitos desse projeto é que seja possível alterar a interrupção da UART
 
 # Conclusão
 
