@@ -99,23 +99,20 @@ void MinhaUARTHandler(void)
             caract = caract - 32;
           }  
         }
-        UARTCharPutNonBlocking(UART0_BASE, caract); // Escreve 
-        GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_0, GPIO_PIN_0);
+        UARTCharPutNonBlocking(UART0_BASE, caract); // Escreve na UART
+        // Feedback visual de que um dado foi recebido na uart
+        GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_0, GPIO_PIN_0); 
         SysCtlDelay(SysClock / (1000 * 3));
         GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_0, 0);
     }
     //zera a variável
     caract = 0;
 }
-
 ```
 
 # Conclusão
 
- Poderíamos ficar aqui conferindo pixel por pixel para ver se o histograma foi gerado corretamente, entretando essa veríficação já foi feita e o algoritmo foi implmentado conforme os requisitos, o cerne da dircussão nessa seção é falar de como esse algoritmo foi implmentado, quais a dificuldades, no que ele contribuiu para o processo de aprendizaegem e uma forma alternativa de desenvolvê-lo.
-Primeiramente, este lab serviu para entender as diferenças de armazenamento, além de mostrar o trabalho do compilador, mas por quê o trabalho do compilador ? o compilador organizou a matriz de uma forma que ela ficasse sequencial na memória, isso implica que eu não teria que acessar endereços de endereços para acessar uma linha ou uma coluna da matriz, isso tornou fácil o desenvolvimento uma vez que os dados referente a imagem estavam dispostos sequencialmente na memória. Outro ponto importante foi percorrer a memória, para qualquer pessoa parece trivial fazer um laço for em linguagem C e percorrer os dados, entretanto quando se programa em assembly é necessário saber quantos bytes você irá pular por o tamanho em bytes determina que tipo de dados estamos tratando e esse lab ajudou a compreender como isso acontece internamente.
-O primeiro algoritmo implementado era computacionalmente custoso uma vez que ele percorria toda imagem e depois voltava para RAM para somar, isso fazia o algoritmo percorrer a imagem muitas vezes, o que demorava mais, talvez com uma imagem maior e com uma UART fosse possível implementar para imagens de mais bits sem comprometer tanto o tempo de desenvolvimento uma vez que o terminal IO do IAR é um pouco lento. </p>
-
+Evidentemente poderíamos ter usado a biblioteca ctype.h e fazer uso das funções tolower() e toupper() para converter para maiúsculo e minúsculo, entretanto como estamos trabalhando em um sistema com recursos limitados, chamar bibliotecas assim podem acarretar problemas, como uso excessivo de recursos, quando na verdade o algoritmo é algo relativamente fácil de ser implementado, claro que esse algoritmo ainda pode melhorar, no quesito eficiência, mas já é melhor que instanciar uma biblioteca completa para isso. 
 # Referências
 
 1. Blog sobre funcionamento UART - https://deepbluembedded.com/uart-pic-microcontroller-tutorial/
