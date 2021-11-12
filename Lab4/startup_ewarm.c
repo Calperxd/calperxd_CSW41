@@ -49,7 +49,7 @@ static void IntDefaultHandler(void);
 // External declaration for the interrupt handler used by the application.
 //
 //*****************************************************************************
-extern void UARTIntHandler(void);
+extern void MinhaUARTHandler(void);
 
 //*****************************************************************************
 //
@@ -109,7 +109,7 @@ __root const uVectorEntry __vector_table[] @ ".intvec" =
     IntDefaultHandler,                      // GPIO Port C
     IntDefaultHandler,                      // GPIO Port D
     IntDefaultHandler,                      // GPIO Port E
-    UARTIntHandler,                         // UART0 Rx and Tx
+    MinhaUARTHandler,                         // UART0 Rx and Tx
     IntDefaultHandler,                      // UART1 Rx and Tx
     IntDefaultHandler,                      // SSI0 Rx and Tx
     IntDefaultHandler,                      // I2C0 Master and Slave

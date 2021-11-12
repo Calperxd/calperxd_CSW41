@@ -1,5 +1,6 @@
 #include <stdint.h>
 #include <stdbool.h>
+#include <stdio.h>
 #include "inc/hw_ints.h"
 #include "inc/hw_memmap.h"
 #include "driverlib/debug.h"
@@ -11,46 +12,72 @@
 #include "driverlib/sysctl.h"
 #include "driverlib/uart.h"
 
+uint32_t SysClock;
 
-uint32_t g_ui32SysClock;
 
-void UARTIntHandler(void)
+
+// Envia string para a uart
+void UARTSend(const uint8_t *Buffer, uint32_t Len)
 {
-    uint32_t ui32Status;
-    ui32Status = MAP_UARTIntStatus(UART0_BASE, true);
-    MAP_UARTIntClear(UART0_BASE, ui32Status);
-    while(MAP_UARTCharsAvail(UART0_BASE))
+    while(Len--)
     {
-        MAP_UARTCharPutNonBlocking(UART0_BASE, MAP_UARTCharGetNonBlocking(UART0_BASE));
-        MAP_GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_0, GPIO_PIN_0);
-        SysCtlDelay(g_ui32SysClock / (1000 * 3));
-        MAP_GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_0, 0);
+        UARTCharPutNonBlocking(UART0_BASE, *Buffer++);
     }
 }
 
-void
-UARTSend(const uint8_t *pui8Buffer, uint32_t ui32Count)
+void MinhaUARTHandler(void)
 {
-    while(ui32Count--)
+    uint32_t Status;
+    volatile int32_t caract;
+
+    Status = UARTIntStatus(UART0_BASE, true);                   // Retorna o status da interrupção    
+    UARTIntClear(UART0_BASE, Status);                           // Limpa Flag de interrupção
+    
+    //Verifica se tem algum dado na fifo
+    while(UARTCharsAvail(UART0_BASE))
     {
-        MAP_UARTCharPutNonBlocking(UART0_BASE, *pui8Buffer++);
+        // Algoritmo de conversao
+        caract = UARTCharGetNonBlocking(UART0_BASE);
+        //maiúsculo para minúsculo
+        if((caract > 64) && (caract < 91))
+        {
+          caract = caract + 32;
+        }else{
+          //minúsculo para maiúsculo
+          if((caract > 96) && (caract < 123))
+          {
+            caract = caract - 32;
+          }  
+        }
+        UARTCharPutNonBlocking(UART0_BASE, caract); // Escreve na UART
+        // Feedback visual de que um dado foi recebido na uart
+        GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_0, GPIO_PIN_0); 
+        SysCtlDelay(SysClock / (1000 * 3));
+        GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_0, 0);
     }
+    //zera a variável
+    caract = 0;
+}
+
+void setup()
+{
+    SysClock = SysCtlClockFreqSet((SYSCTL_XTAL_25MHZ | SYSCTL_OSC_MAIN | SYSCTL_USE_PLL | SYSCTL_CFG_VCO_240), 120000000);
+    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPION);
+    GPIOPinTypeGPIOOutput(GPIO_PORTN_BASE, GPIO_PIN_0);
+    SysCtlPeripheralEnable(SYSCTL_PERIPH_UART0);
+    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
+    IntMasterEnable();
+    GPIOPinConfigure(GPIO_PA0_U0RX);
+    GPIOPinConfigure(GPIO_PA1_U0TX);
+    GPIOPinTypeUART(GPIO_PORTA_BASE, GPIO_PIN_0 | GPIO_PIN_1);
+    UARTConfigSetExpClk(UART0_BASE, SysClock, 115200, (UART_CONFIG_WLEN_8 | UART_CONFIG_STOP_ONE | UART_CONFIG_PAR_NONE));
+    IntEnable(INT_UART0);
+    UARTIntEnable(UART0_BASE, UART_INT_RX | UART_INT_RT);
 }
 
 int main(void)
 {
-    g_ui32SysClock = MAP_SysCtlClockFreqSet((SYSCTL_XTAL_25MHZ | SYSCTL_OSC_MAIN | SYSCTL_USE_PLL | SYSCTL_CFG_VCO_240), 120000000);
-    MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPION);
-    MAP_GPIOPinTypeGPIOOutput(GPIO_PORTN_BASE, GPIO_PIN_0);
-    MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_UART0);
-    MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
-    MAP_IntMasterEnable();
-    MAP_GPIOPinConfigure(GPIO_PA0_U0RX);
-    MAP_GPIOPinConfigure(GPIO_PA1_U0TX);
-    MAP_GPIOPinTypeUART(GPIO_PORTA_BASE, GPIO_PIN_0 | GPIO_PIN_1);
-    MAP_UARTConfigSetExpClk(UART0_BASE, g_ui32SysClock, 115200, (UART_CONFIG_WLEN_8 | UART_CONFIG_STOP_ONE | UART_CONFIG_PAR_NONE));
-    MAP_IntEnable(INT_UART0);
-    MAP_UARTIntEnable(UART0_BASE, UART_INT_RX | UART_INT_RT);
+    setup();
     UARTSend((uint8_t *)"\033[2JEnter text: ", 16);
     while(1)
     {
