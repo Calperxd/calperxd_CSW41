@@ -72,8 +72,7 @@ Todas as linhas estão comentadas com o respectivo periférico, caso não estive
 ![image](https://user-images.githubusercontent.com/48101913/141489623-1f6d41c7-7462-4334-9901-aca392194980.png)
 ![image](https://user-images.githubusercontent.com/48101913/141489689-6cf103f3-5dfd-48f7-be0f-dc71e2936677.png)
 
-O cerne do algorítmo está no trecho de código abaixo, o resto é apenas configuração de periférico, observe que na pasta do projeto está tudo bem modular, para seja fácil entendido o código
-
+O cerne do algorítmo está no trecho de código abaixo, o resto é apenas configuração de periférico, observe que na pasta do projeto está tudo bem modular, para que o código seja de facil entendimento
 ```cpp
 void MinhaUARTHandler(void)
 {
