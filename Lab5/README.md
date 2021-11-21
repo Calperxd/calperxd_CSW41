@@ -13,7 +13,7 @@
 Portar para a Tiva o projeto exemplo do ThreadX.
 # Ambiente
 
-Neste laboratório a configuração do ambiente mudou, isso implica que teremos que configurar novamente o ambiente de desenvolvimento para a nova plataforma de RTOS(ThreadX), Antes estávemos desenvolvendo em Bare Metal, o novo diretório deve parecer como mostra o Shell abaixo.
+Neste laboratório a configuração do ambiente mudou, isso implica que teremos que configurar novamente o ambiente de desenvolvimento para a nova plataforma de RTOS(ThreadX), Antes estávemos desenvolvendo em Bare Metal, o novo diretório deve parecer como pode ser visto logo abaixo.
 ```shell
   $ tree
   .
@@ -26,6 +26,7 @@ Neste laboratório a configuração do ambiente mudou, isso implica que teremos 
       ├── sample_threadx.c
       └── tx_initialize_low_level.s
 ```
+O primeiro passo é compilar o ThreadX em uma biblioteca estática para que ele esteja disponível no nosso código, para compilar para arquitetura ARM Cortex M4 é só ir na pasta /ThreadX/ports/cortex_m4 e escolher em qual compilador você irá compilar, note que existem várias além de ser possível compilar usando as ferramentas GNU, entretanto para esse lab usaremos a IDE da iar que vem com seu compilador proprietário, para isso navegue até a pasta \ThreadX\ports\cortex_m4\iar e abra o projeto.
 
 # Conclusão
 
