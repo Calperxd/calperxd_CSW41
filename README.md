@@ -13,3 +13,5 @@
 <b>Lab3</b> <a href="https://github.com/Calperxd/calperxd_CSW41/tree/master/Lab3">Histograma</a> 
 
 <b>Lab4</b> <a href="https://github.com/Calperxd/calperxd_CSW41/tree/master/Lab4">UART</a> 
+
+<b>Lab4</b> <a href="https://github.com/Calperxd/calperxd_CSW41/tree/master/Lab5">Threads</a> 
