@@ -10,7 +10,7 @@
 # Lab5
 
 #### Introdução
-Esse labaratório tem como objetivo configurar a interface UART de forma que seja possível Enviar e receber dados pelo terminal.
+Portar para a Tiva o projeto exemplo do ThreadX.
 # UART
 A UART (Universal Asynchronous Receiver-Transmitter) é um modo de transmissão serial muito utilizado em sistemas embarcados, ele transmite dados de um microcontrolador para outro ou para um computador podendo utilizar apenas 2 fios RX (Reciever) e TX(Transmitter) além da referêcia. É um sistema full duplex ou seja, pode transmitir e receber ao mesmo tempo.
 
