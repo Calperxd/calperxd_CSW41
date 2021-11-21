@@ -25,7 +25,6 @@ Neste laboratório a configuração do ambiente mudou, isso implica que teremos 
       ├── cstartup_M.s
       ├── sample_threadx.c
       └── tx_initialize_low_level.s
-      
 ```
 
 #### Funcionamento da UART.
