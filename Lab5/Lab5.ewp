@@ -36,11 +36,11 @@
                 </option>
                 <option>
                     <name>Input description</name>
-                    <state></state>
+                    <state>Full formatting, without multibyte support.</state>
                 </option>
                 <option>
                     <name>Output description</name>
-                    <state></state>
+                    <state>Full formatting, without multibyte support.</state>
                 </option>
                 <option>
                     <name>GOutputBinary</name>
@@ -48,7 +48,7 @@
                 </option>
                 <option>
                     <name>OGCoreOrChip</name>
-                    <state>0</state>
+                    <state>1</state>
                 </option>
                 <option>
                     <name>GRuntimeLibSelect</name>
@@ -62,7 +62,7 @@
                 </option>
                 <option>
                     <name>RTDescription</name>
-                    <state></state>
+                    <state>Use the normal configuration of the C/C++ runtime library. No locale interface, C locale, no file descriptor support, no multibytes in printf and scanf, and no hex floats in strtod.</state>
                 </option>
                 <option>
                     <name>OGProductVersion</name>
@@ -74,7 +74,7 @@
                 </option>
                 <option>
                     <name>OGChipSelectEditMenu</name>
-                    <state>Default	None</state>
+                    <state>TM4C1294NCPDT	TexasInstruments TM4C1294NCPDT</state>
                 </option>
                 <option>
                     <name>GenLowLevelInterface</name>
@@ -99,7 +99,7 @@
                 <option>
                     <name>GBECoreSlave</name>
                     <version>30</version>
-                    <state>38</state>
+                    <state>39</state>
                 </option>
                 <option>
                     <name>OGUseCmsis</name>
@@ -111,26 +111,26 @@
                 </option>
                 <option>
                     <name>GRuntimeLibThreads</name>
-                    <state>0</state>
+                    <state>1</state>
                 </option>
                 <option>
                     <name>CoreVariant</name>
                     <version>30</version>
-                    <state>38</state>
+                    <state>39</state>
                 </option>
                 <option>
                     <name>GFPUDeviceSlave</name>
-                    <state>Default	None</state>
+                    <state>TM4C1294NCPDT	TexasInstruments TM4C1294NCPDT</state>
                 </option>
                 <option>
                     <name>FPU2</name>
                     <version>0</version>
-                    <state>0</state>
+                    <state>4</state>
                 </option>
                 <option>
                     <name>NrRegs</name>
                     <version>0</version>
-                    <state>0</state>
+                    <state>1</state>
                 </option>
                 <option>
                     <name>NEON</name>
@@ -139,7 +139,7 @@
                 <option>
                     <name>GFPUCoreSlave2</name>
                     <version>30</version>
-                    <state>38</state>
+                    <state>39</state>
                 </option>
                 <option>
                     <name>OGCMSISPackSelectDevice</name>
@@ -180,7 +180,7 @@
                 </option>
                 <option>
                     <name>DSPExtension</name>
-                    <state>0</state>
+                    <state>1</state>
                 </option>
                 <option>
                     <name>TrustZone</name>
@@ -214,7 +214,7 @@
                 </option>
                 <option>
                     <name>CCDefines</name>
-                    <state></state>
+                    <state>TX_ENABLE_IAR_LIBRARY_SUPPORT</state>
                 </option>
                 <option>
                     <name>CCPreprocFile</name>
@@ -335,7 +335,9 @@
                 </option>
                 <option>
                     <name>CCIncludePath2</name>
-                    <state></state>
+                    <state>$PROJ_DIR$\..\..\ThreadX</state>
+                    <state>$PROJ_DIR$\..\..\ThreadX\common\inc</state>
+                    <state>$PROJ_DIR$\..\..\ThreadX\ports\cortex_m4\iar\inc</state>
                 </option>
                 <option>
                     <name>CCStdIncCheck</name>
@@ -579,7 +581,7 @@
                 </option>
                 <option>
                     <name>AOutputFile</name>
-                    <state></state>
+                    <state>$FILE_BNAME$.o</state>
                 </option>
                 <option>
                     <name>ALimitErrorsCheck</name>
@@ -651,7 +653,7 @@
             <data>
                 <extensions></extensions>
                 <cmdline></cmdline>
-                <hasPrio>0</hasPrio>
+                <hasPrio>32</hasPrio>
                 <buildSequence>inputOutputBased</buildSequence>
             </data>
         </settings>
@@ -744,7 +746,7 @@
                 </option>
                 <option>
                     <name>IlinkIcfFile</name>
-                    <state></state>
+                    <state>$TOOLKIT_DIR$\config\linker\TexasInstruments\TM4C1294NC.icf</state>
                 </option>
                 <option>
                     <name>IlinkIcfFileSlave</name>
@@ -792,7 +794,7 @@
                 </option>
                 <option>
                     <name>IlinkAdditionalLibs</name>
-                    <state></state>
+                    <state>$PROJ_DIR$\tx.a</state>
                 </option>
                 <option>
                     <name>IlinkOverrideProgramEntryLabel</name>
@@ -804,7 +806,7 @@
                 </option>
                 <option>
                     <name>IlinkProgramEntryLabel</name>
-                    <state></state>
+                    <state>__iar_program_start</state>
                 </option>
                 <option>
                     <name>DoFill</name>
@@ -977,7 +979,7 @@
                 </option>
                 <option>
                     <name>IlinkTrustzoneImportLibraryOut</name>
-                    <state>###Unitialized###</state>
+                    <state>Lab5_import_lib.o</state>
                 </option>
                 <option>
                     <name>OILinkExtraOption</name>
@@ -2085,7 +2087,19 @@
             </data>
         </settings>
     </configuration>
-    <file>
-        <name>$PROJ_DIR$\main.cpp</name>
-    </file>
+    <group>
+        <name>include</name>
+    </group>
+    <group>
+        <name>src</name>
+        <file>
+            <name>$PROJ_DIR$\src\cstartup_M.s</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\sample_threadx.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\tx_initialize_low_level.s</name>
+        </file>
+    </group>
 </project>
