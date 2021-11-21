@@ -17,13 +17,15 @@ Neste laboratório a configuração do ambiente mudou, isso implica que teremos 
 ```shell
   $ tree
   .
-  ├── lib
-  │   └── blackjack.ex
-  ├── mix.exs
+  ├── Debug
+  ├── settings
   ├── README.md
-  └── test
-      ├── blackjack_test.exs
-      └── test_helper.exs
+  ├── tx.a
+  └── src
+      ├── cstartup_M.s
+      ├── sample_threadx.c
+      └── tx_initialize_low_level.s
+      
 ```
 
 #### Funcionamento da UART.
