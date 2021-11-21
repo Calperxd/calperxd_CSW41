@@ -11,8 +11,20 @@
 
 #### Introdução
 Portar para a Tiva o projeto exemplo do ThreadX.
-# UART
-A UART (Universal Asynchronous Receiver-Transmitter) é um modo de transmissão serial muito utilizado em sistemas embarcados, ele transmite dados de um microcontrolador para outro ou para um computador podendo utilizar apenas 2 fios RX (Reciever) e TX(Transmitter) além da referêcia. É um sistema full duplex ou seja, pode transmitir e receber ao mesmo tempo.
+# Ambiente
+
+Neste laboratório a configuração do ambiente mudou, isso implica que teremos que configurar novamente o ambiente de desenvolvimento para a nova plataforma de RTOS(ThreadX), Antes estávemos desenvolvendo em Bare Metal, o novo diretório deve parecer como mostra o Shell abaixo.
+```shell
+  $ tree
+  .
+  ├── lib
+  │   └── blackjack.ex
+  ├── mix.exs
+  ├── README.md
+  └── test
+      ├── blackjack_test.exs
+      └── test_helper.exs
+```
 
 #### Funcionamento da UART.
 
