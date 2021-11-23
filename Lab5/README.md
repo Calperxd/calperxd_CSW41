@@ -26,7 +26,15 @@ Neste laboratório a configuração do ambiente mudou, isso implica que teremos 
       ├── sample_threadx.c
       └── tx_initialize_low_level.s
 ```
-O primeiro passo é compilar o ThreadX em uma biblioteca estática para que ele esteja disponível no nosso código, para compilar para arquitetura ARM Cortex M4 é só ir na pasta /ThreadX/ports/cortex_m4 e escolher em qual compilador você irá compilar, note que existem várias além de ser possível compilar usando as ferramentas GNU, entretanto para esse lab usaremos a IDE da iar que vem com seu compilador proprietário, para isso navegue até a pasta \ThreadX\ports\cortex_m4\iar e abra o projeto.
+
+Mapeie o código do Threadx de acordo com as mensagens de erros geradas no console de log, ou simplesmente mapeie igual a imagem abaixo, tanto para o projeto tx quanto para o sample_threadx.
+
+![image](https://user-images.githubusercontent.com/48101913/143146428-c57d46d5-eaee-470c-ac13-c1a0bc2319c1.png)
+
+
+Agora é necessário comppilar o ThreadX em uma biblioteca estática para que ele esteja disponível no nosso código., para compilar para arquitetura ARM Cortex M4 é só ir na pasta /ThreadX/ports/cortex_m4 e escolher em qual compilador você irá compilar, note que existem várias além de ser possível compilar usando as ferramentas GNU, entretanto para esse lab usaremos a IDE da iar que vem com seu compilador proprietário, para isso navegue até a pasta \ThreadX\ports\cortex_m4\iar e abra o projeto e compile-o, Isso irá gerar o arquivo abaixo. Para saber o que foi compilado basta você verificar com a ferramenta de linha de comando **arm-none-eabi-nm tx.a** ou **arm-none-eabi-ar t tx.a**.
+
+![image](https://user-images.githubusercontent.com/48101913/143145717-07d7a922-875b-493d-b501-7d99f3ba918f.png)
 
 # Conclusão
 
