@@ -2840,9 +2840,6 @@
         </settings>
     </configuration>
     <group>
-        <name>include</name>
-    </group>
-    <group>
         <name>src</name>
         <file>
             <name>$PROJ_DIR$\src\cstartup_M.s</name>

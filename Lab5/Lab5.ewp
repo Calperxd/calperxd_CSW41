@@ -653,7 +653,7 @@
             <data>
                 <extensions></extensions>
                 <cmdline></cmdline>
-                <hasPrio>32</hasPrio>
+                <hasPrio>1</hasPrio>
                 <buildSequence>inputOutputBased</buildSequence>
             </data>
         </settings>
@@ -2087,9 +2087,6 @@
             </data>
         </settings>
     </configuration>
-    <group>
-        <name>include</name>
-    </group>
     <group>
         <name>src</name>
         <file>
