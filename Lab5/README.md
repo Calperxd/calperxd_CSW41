@@ -65,6 +65,11 @@ Para preencher o stack size e priority é so pausar a execução do programa e s
 
 ![image](https://user-images.githubusercontent.com/48101913/143154692-0404c5ba-5122-45f7-a2eb-c02b719b6cc7.png)
 
+Para preencher o auto start da planilha basta olhar o último parâmtro da função **tx_thread_create()** que é responsável por configurar a thread. Uma informação adicional é que o threadx possui um TCB (task control block) e esse TCB é o primeiro parâmetro que é passado para a função **tx_thread_create()** veja que cada thread possui seu próprio TCB, que é comum em sistemas operacionais ele possui muitas informações sobre a thread, no linux por exemplo esse TCB no kernel atual possui mais de 1000 propriedades, a imagem abaixo mostra a definição TCB do ThreadX, veja que ele possui muitas informações importantes.
+
+![image](https://user-images.githubusercontent.com/48101913/143163575-fc62b32e-4031-4ed0-95b7-cd85ed9e8a90.png)
+
+
 
 
 
