@@ -54,6 +54,14 @@ Agora habilite o plugin ThreadX para que na hora do debug algumas funções este
 ![image](https://user-images.githubusercontent.com/48101913/143149282-24a67bc4-fecf-4bea-885c-a122021687eb.png)
 
 
+
+|   |   |   |   |   |
+|---|---|---|---|---|
+|   |   |   |   |   |
+|   |   |   |   |   |
+|   |   |   |   |   |
+
+
 # Conclusão
 
 Evidentemente poderíamos ter usado a biblioteca ctype.h e fazer uso das funções tolower() e toupper() para converter para maiúsculo e minúsculo, entretanto como estamos trabalhando em um sistema com recursos limitados, chamar bibliotecas assim podem acarretar problemas, como uso excessivo de recursos, quando na verdade o algoritmo é algo relativamente fácil de ser implementado, claro que esse algoritmo ainda pode melhorar, no quesito eficiência, mas já é melhor que instanciar uma biblioteca completa para isso. 
