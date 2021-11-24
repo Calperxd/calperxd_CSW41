@@ -91,8 +91,24 @@ Explorado todos os campos, a tabela final fica assim:
 | Thread 6    	| thread_6_and_7_entry 	| 1024       	| 8        	| yes        	| TX_NO_TIME_SLICE 	|
 | Thread 7    	| thread_6_and_7_entry 	| 1024       	| 8        	| yes        	| TX_NO_TIME_SLICE 	|
 
+|      Name     	| control structure 	| size 	|   location   	|
+|:-------------:	|:-----------------:	|:----:	|:------------:	|
+|  byte pool 0  	|    byte_pool_0    	| 9120 	|  0x2000.0004 	|
+|  block pool 0 	|    block_pool_0   	|  100 	|  0x2000.21e4 	|
+| event flags 0 	|   event_flags_0   	|      	|  0x2000.30c0 	|
+|    mutex 0    	|      mutex_0      	|      	|  0x2000.3028 	|
+|  semaphore 0  	|    semaphore_0    	|      	|  0x2000.30e8 	|
+|    queue 0    	|      queue_0      	|  100 	| 0xx2000.2fec 	|
+
+
+
+Note que todas essas estruturas de controle, na verdade são **STRUCTS** da linguagem C e podem ser assististidas pela ferramenta de live watcha da IAR, note que as structs possuem vários campos que podem ser futuramente utilizados(abaixo um exemplo assistindo comportamento da etrutura no live watch).
+
+![image](https://user-images.githubusercontent.com/48101913/143171778-72935d01-db2c-4a3c-aa74-7c1c527ebfb8.png)
+
+
 
 # Referências
 
-1. Blog sobre funcionamento UART - https://deepbluembedded.com/uart-pic-microcontroller-tutorial/
+1. Referências de funções do ThreadX - https://docs.microsoft.com/en-us/azure/rtos/threadx/chapter4#tx_byte_pool_create
 
