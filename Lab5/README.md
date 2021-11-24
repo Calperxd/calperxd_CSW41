@@ -78,7 +78,18 @@ Descrição dos parâmetros da **tx_thread_create()**.
 
 
 
+Explorado todos os campos, a tabela final fica assim:
 
+| Thread Name 	| entry function       	| stack size 	| priority 	| auto start 	| time slicing     	|
+|-------------	|----------------------	|------------	|----------	|------------	|------------------	|
+| Thread 0    	| Threthread_0_entry   	| 1024       	| 1        	| yes        	| TX_NO_TIME_SLICE 	|
+| Thread 1    	| thread_1_entry       	| 1024       	| 16       	| yes        	| 4                	|
+| Thread 2    	| thread_2_entry       	| 1024       	| 16       	| yes        	| 4                	|
+| Thread 3    	| thread_3_and_4_entry 	| 1024       	| 8        	| yes        	| TX_NO_TIME_SLICE 	|
+| Thread 4    	| thread_3_and_4_entry 	| 1024       	| 8        	| yes        	| TX_NO_TIME_SLICE 	|
+| Thread 5    	| thread_5_entry       	| 1024       	| 4        	| yes        	| TX_NO_TIME_SLICE 	|
+| Thread 6    	| thread_6_and_7_entry 	| 1024       	| 8        	| yes        	| TX_NO_TIME_SLICE 	|
+| Thread 7    	| thread_6_and_7_entry 	| 1024       	| 8        	| yes        	| TX_NO_TIME_SLICE 	|
 
 
 # Referências
