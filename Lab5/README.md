@@ -69,6 +69,12 @@ Para preencher o auto start da planilha basta olhar o último parâmtro da funç
 
 ![image](https://user-images.githubusercontent.com/48101913/143163575-fc62b32e-4031-4ed0-95b7-cd85ed9e8a90.png)
 
+Para preencher a a última coluna da primeira tabela a documentação do ThreadX foi consultada, a documentação diz o quarto parâmetro é o time-slice(tempo que a tarefa executa sem ser interrompida).
+
+![image](https://user-images.githubusercontent.com/48101913/143167449-805113a8-71f7-4376-9c32-f160f3218f04.png)
+
+Descrição dos parâmetros da **tx_thread_create()**.
+![image](https://user-images.githubusercontent.com/48101913/143167625-1c9fecad-c522-4001-a2b3-b7d40519220c.png)
 
 
 
