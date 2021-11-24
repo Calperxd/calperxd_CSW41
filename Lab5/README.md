@@ -41,7 +41,17 @@ Agora copie os arquivos sample_threadx.c, cstartup.c e tx_initialize_low_level.c
 ![image](https://user-images.githubusercontent.com/48101913/143147874-acf8689c-f19f-4d3a-81d7-27a5e37a0e3f.png)
 
 
+Mapeie o projeto igual a imagem abaixo.
 
+![image](https://user-images.githubusercontent.com/48101913/143148117-32c4d4ce-702b-4bd2-a6ec-1f3ab8f98840.png)
+
+No Linker mapeie a biblioteca estática do ThreadX, que foi o arquivo inicialmente compilado nos dois primeiros passos, conforme a imagem abaixo.
+
+![image](https://user-images.githubusercontent.com/48101913/143148369-d688d0d5-b40c-49ad-aa00-d49e5b2d2f43.png)
+
+Agora habilite o plugin ThreadX para que na hora do debug algumas funções estejam disponíveis
+
+![image](https://user-images.githubusercontent.com/48101913/143149228-ccb509b9-cdf5-45f3-a729-fac399b523b9.png)
 
 
 # Conclusão
