@@ -53,14 +53,22 @@ Agora habilite o plugin ThreadX para que na hora do debug algumas funções este
 
 ![image](https://user-images.githubusercontent.com/48101913/143149282-24a67bc4-fecf-4bea-885c-a122021687eb.png)
 
+O plugin de ThreadX é muito importante pois ele dá informaações sobre as threads durante o debug, basta apenas apertar o botão **pause** que é possível ver as informações de cada thread, existem várias funções que podem ser exploradas, mas para este lab vamos nos ater as que são necessária para preencher a tabela solicitada pelo professor(Abaixo foto da função thread list do plugin).
+
+![image](https://user-images.githubusercontent.com/48101913/143153919-001d8277-913d-4be9-8233-3e52f0dedee5.png)
+
+Todos os nomes de Threads estão definidos logo no começo do código , assim é possível preencher todos os campos "entry function " da tabela
+
+![image](https://user-images.githubusercontent.com/48101913/143154331-84211292-44be-41b8-bd7b-900f863f793d.png)
+
+Para preencher o stack size e priority é so pausar a execução do programa e selecionar o plugin Thread List.
+
+![image](https://user-images.githubusercontent.com/48101913/143154692-0404c5ba-5122-45f7-a2eb-c02b719b6cc7.png)
 
 
 
 
 
-# Conclusão
-
-Evidentemente poderíamos ter usado a biblioteca ctype.h e fazer uso das funções tolower() e toupper() para converter para maiúsculo e minúsculo, entretanto como estamos trabalhando em um sistema com recursos limitados, chamar bibliotecas assim podem acarretar problemas, como uso excessivo de recursos, quando na verdade o algoritmo é algo relativamente fácil de ser implementado, claro que esse algoritmo ainda pode melhorar, no quesito eficiência, mas já é melhor que instanciar uma biblioteca completa para isso. 
 
 # Referências
 
