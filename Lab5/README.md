@@ -36,6 +36,14 @@ Agora é necessário comppilar o ThreadX em uma biblioteca estática para que el
 
 ![image](https://user-images.githubusercontent.com/48101913/143145717-07d7a922-875b-493d-b501-7d99f3ba918f.png)
 
+Agora copie os arquivos sample_threadx.c, cstartup.c e tx_initialize_low_level.c para pasta src além de também copiar para a pasta Lab5 o tx.a.
+
+![image](https://user-images.githubusercontent.com/48101913/143147874-acf8689c-f19f-4d3a-81d7-27a5e37a0e3f.png)
+
+
+
+
+
 # Conclusão
 
 Evidentemente poderíamos ter usado a biblioteca ctype.h e fazer uso das funções tolower() e toupper() para converter para maiúsculo e minúsculo, entretanto como estamos trabalhando em um sistema com recursos limitados, chamar bibliotecas assim podem acarretar problemas, como uso excessivo de recursos, quando na verdade o algoritmo é algo relativamente fácil de ser implementado, claro que esse algoritmo ainda pode melhorar, no quesito eficiência, mas já é melhor que instanciar uma biblioteca completa para isso. 
