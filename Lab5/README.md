@@ -51,7 +51,7 @@ No Linker mapeie a biblioteca estática do ThreadX, que foi o arquivo inicialmen
 
 Agora habilite o plugin ThreadX para que na hora do debug algumas funções estejam disponíveis
 
-![image](https://user-images.githubusercontent.com/48101913/143149228-ccb509b9-cdf5-45f3-a729-fac399b523b9.png)
+![image](https://user-images.githubusercontent.com/48101913/143149282-24a67bc4-fecf-4bea-885c-a122021687eb.png)
 
 
 # Conclusão
