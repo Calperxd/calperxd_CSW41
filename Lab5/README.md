@@ -55,11 +55,7 @@ Agora habilite o plugin ThreadX para que na hora do debug algumas funções este
 
 
 
-|   |   |   |   |   |
-|---|---|---|---|---|
-|   |   |   |   |   |
-|   |   |   |   |   |
-|   |   |   |   |   |
+
 
 
 # Conclusão
