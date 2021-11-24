@@ -110,5 +110,5 @@ Note que todas essas estruturas de controle, na verdade são **STRUCTS** da ling
 
 # Referências
 
-1. Referências de funções do ThreadX - https://docs.microsoft.com/en-us/azure/rtos/threadx/chapter4#tx_byte_pool_create
+1.  Descrição de funções do ThreadX - https://docs.microsoft.com/en-us/azure/rtos/threadx/chapter4#tx_byte_pool_create
 
