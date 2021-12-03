@@ -7,7 +7,7 @@
 - Email: gabrielseabra@alunos.utfpr.edu.br
 
 
-# Lab5
+# Lab6
 
 #### Introdução
 
