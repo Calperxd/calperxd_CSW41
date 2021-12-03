@@ -111,7 +111,7 @@
                 </option>
                 <option>
                     <name>GRuntimeLibThreads</name>
-                    <state>0</state>
+                    <state>1</state>
                 </option>
                 <option>
                     <name>CoreVariant</name>
@@ -214,7 +214,7 @@
                 </option>
                 <option>
                     <name>CCDefines</name>
-                    <state></state>
+                    <state>TX_ENABLE_IAR_LIBRARY_SUPPORT</state>
                 </option>
                 <option>
                     <name>CCPreprocFile</name>
@@ -335,8 +335,10 @@
                 </option>
                 <option>
                     <name>CCIncludePath2</name>
+                    <state>$PROJ_DIR$\..\..\ThreadX\ports\cortex_m4\iar\inc</state>
+                    <state>$PROJ_DIR$\..\..\ThreadX\common\inc</state>
+                    <state>$PROJ_DIR$\..\..\ThreadX\common\src</state>
                     <state>$PROJ_DIR$\..\..\ThreadX</state>
-                    <state>$PROJ_DIR$\..\..\ThreadX\ports\cortex_m4\iar</state>
                 </option>
                 <option>
                     <name>CCStdIncCheck</name>
@@ -393,7 +395,7 @@
                 </option>
                 <option>
                     <name>IccCppInlineSemantics</name>
-                    <state>0</state>
+                    <state>1</state>
                 </option>
                 <option>
                     <name>IccCmsis</name>
@@ -652,7 +654,7 @@
             <data>
                 <extensions></extensions>
                 <cmdline></cmdline>
-                <hasPrio>0</hasPrio>
+                <hasPrio>48</hasPrio>
                 <buildSequence>inputOutputBased</buildSequence>
             </data>
         </settings>
@@ -741,11 +743,11 @@
                 </option>
                 <option>
                     <name>IlinkIcfOverride</name>
-                    <state>0</state>
+                    <state>1</state>
                 </option>
                 <option>
                     <name>IlinkIcfFile</name>
-                    <state>$TOOLKIT_DIR$\CONFIG\generic_cortex.icf</state>
+                    <state>C:\Program Files\IAR Systems\Embedded Workbench 9.0\arm\config\linker\TexasInstruments\TM4C1294NC.icf</state>
                 </option>
                 <option>
                     <name>IlinkIcfFileSlave</name>
@@ -793,11 +795,11 @@
                 </option>
                 <option>
                     <name>IlinkAdditionalLibs</name>
-                    <state>$PROJ_DIR$\tx.a</state>
+                    <state>$PROJ_DIR$\..\..\ThreadX\ports\cortex_m4\iar\example_build\Debug\Exe\tx.a</state>
                 </option>
                 <option>
                     <name>IlinkOverrideProgramEntryLabel</name>
-                    <state>0</state>
+                    <state>1</state>
                 </option>
                 <option>
                     <name>IlinkProgramEntryLabelSelect</name>
@@ -2086,7 +2088,16 @@
             </data>
         </settings>
     </configuration>
-    <file>
-        <name>$PROJ_DIR$\main.c</name>
-    </file>
+    <group>
+        <name>src</name>
+        <file>
+            <name>$PROJ_DIR$\src\cstartup_M.s</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\sample_threadx.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\tx_initialize_low_level.s</name>
+        </file>
+    </group>
 </project>
