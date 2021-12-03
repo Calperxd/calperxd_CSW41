@@ -10,7 +10,7 @@
 # Lab6
 
 #### Introdução
-
+Criar um conjunto de 3 tarefas com temporizaçõe conhecidas. Experimentando variaçõe de algoritmos de escalonamento disponível no ThreadX.
 
 # Referências
 
