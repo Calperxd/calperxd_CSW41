@@ -102,6 +102,24 @@ void my_thread_entry(ULONG thread_input)
 
 ```
 
+O passo mais seguro para criar thread no ThreadX é:
+
+
+```cpp
+
+// Request a block of memory, if there's no consective blocks of memory avaible then link them by using the function
+// All the description above the function tx_byte_pool_create(); does.
+tx_byte_pool_create
+(
+  &byte_pool,
+  "Block of memory",
+  first_unused_memory,
+  BYTE_POOL_SIZE
+);
+
+
+```
+
 
 # Referências
 
