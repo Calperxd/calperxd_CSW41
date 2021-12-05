@@ -174,6 +174,10 @@ https://user-images.githubusercontent.com/48101913/144761323-65e16280-ab2f-4d11-
 ### Testando escalonamentos
 
 **a) Escalonamento por time-slice de 50 ms. Todas as tarefas com mesma prioridade.**
+Todas as Threads executaram piscando os LEDS.
+
+**b) Escalonamento sem time-slice e sem preempção. Prioridades estabelecidas no passo 3. A preempção pode ser evitada com o “
+preemption threshold” do ThreadX.**
 
 
 
