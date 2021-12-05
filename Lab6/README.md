@@ -165,7 +165,11 @@ Quando configurado as 3 Threads para piscar os leds PN0,PN1 e PF4 com **TX_NO_TI
 
 
 
-https://user-images.githubusercontent.com/48101913/144760339-0abd106f-e738-4b87-9023-abc8cbd196db.mp4
+
+
+https://user-images.githubusercontent.com/48101913/144761323-65e16280-ab2f-4d11-847f-6309fd94fe99.mp4
+
+
 
 
 
