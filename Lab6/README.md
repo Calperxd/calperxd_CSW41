@@ -225,6 +225,12 @@ preemption threshold” do ThreadX.**
 | Thread 3 	|  6741  	| 10111 	| 3,37 s 	|
 
 
+
+https://user-images.githubusercontent.com/48101913/144765713-514653c9-46ba-4528-92d6-40c35ded3c74.mp4
+
+
+
+
 # Referências
 
 1.  Descrição de funções do ThreadX - https://docs.microsoft.com/en-us/azure/rtos/threadx/chapter4#tx_byte_pool_create
