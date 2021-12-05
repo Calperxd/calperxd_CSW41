@@ -163,6 +163,12 @@ tx_byte_pool_create
  ```
 Quando configurado as 3 Threads para piscar os leds PN0,PN1 e PF4 com **TX_NO_TIME_SLICE**, **Threshold 1**, **Priority 1** e **TX_AUTO_START** temos a impressão que as threads estão sendo executadas paralelamente. Essa velocidade de troca de contexto pode ser alterada no **tx_api.h** por default ela está em 10ms que é um valor adequado para cada tick do sistema operacional, mas caso seja necessário você pode alterar ele para 10 e ficará 1ms de tick no sistema operacional.
 
+
+
+https://user-images.githubusercontent.com/48101913/144760339-0abd106f-e738-4b87-9023-abc8cbd196db.mp4
+
+
+
 # Referências
 
 1.  Descrição de funções do ThreadX - https://docs.microsoft.com/en-us/azure/rtos/threadx/chapter4#tx_byte_pool_create
