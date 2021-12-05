@@ -160,10 +160,8 @@ tx_byte_pool_create
    
 }
  
- 
- 
  ```
-
+Quando configurado as 3 Threads para piscar os leds PN0,PN1 e PF4 com **TX_NO_TIME_SLICE**, **Threshold 1**, **Priority 1** e **TX_AUTO_START** temos a impressão que as threads estão sendo executadas paralelamente. Essa velocidade de troca de context pode ser alterada no **tx_api.h** por default ele está em 10ms que é um valor adequado para cada tick do sistema operacional, mas caso seja necessário você pode alterar ele para 10 e ficará 1ms de tick no sistema operacional. O primeiro gif é com tick 10ms e o segundo com tick de 1ms.
 
 # Referências
 
