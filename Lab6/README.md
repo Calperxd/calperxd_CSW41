@@ -102,7 +102,7 @@ void my_thread_entry(ULONG thread_input)
 
 ```
 
-O passo mais seguro para criar thread no ThreadX é:
+O passo mais seguro para criar thread no ThreadX é solicitar um bloco de memória onde serão armazenados as stacks das threads criadas.
 
 
 ```cpp
@@ -120,6 +120,9 @@ tx_byte_pool_create
 
 
 ```
+
+![image](https://user-images.githubusercontent.com/48101913/144735628-845e9601-6c39-4a55-8b64-5f98976bafc5.png)
+
 
 
 # Referências
