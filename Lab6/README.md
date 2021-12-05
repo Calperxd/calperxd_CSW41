@@ -174,7 +174,46 @@ https://user-images.githubusercontent.com/48101913/144761323-65e16280-ab2f-4d11-
 ### Testando escalonamentos
 
 **a) Escalonamento por time-slice de 50 ms. Todas as tarefas com mesma prioridade.**
-Todas as Threads executaram piscando os LEDS.
+
+Para esse teste os trechos de códigos referente a interrupção do sistick foram alterados para 1ms **tx_initialize_low_level**.
+```assembly
+
+    EXTERN  _tx_thread_system_stack_ptr
+    EXTERN  _tx_initialize_unused_memory
+    EXTERN  _tx_timer_interrupt
+    EXTERN  __vector_table
+    EXTERN  _tx_execution_isr_enter
+    EXTERN  _tx_execution_isr_exit
+;
+;
+SYSTEM_CLOCK      EQU   25000000
+SYSTICK_CYCLES    EQU   ((SYSTEM_CLOCK / 1000) -1)
+
+    RSEG    FREE_MEM:DATA
+    PUBLIC  __tx_free_memory_start
+__tx_free_memory_start
+    DS32    4
+;
+;
+
+
+```
+
+|  Thread  	| Before 	| After 	|   Time  	|
+|:--------:	|:------:	|:-----:	|:-------:	|
+| Thread 1 	|    0   	| 10125 	| 10,12 s 	|
+| Thread 2 	|    0   	| 10125 	| 10,12 s 	|
+| Thread 3 	|    0   	| 10125 	| 10,12 s 	|
+
+
+ Todas as Threads executaram piscando os LEDS.
+
+
+
+https://user-images.githubusercontent.com/48101913/144763732-8b4f9c65-72aa-457b-a733-0cf48e0ee6fa.mp4
+
+
+
 
 **b) Escalonamento sem time-slice e sem preempção. Prioridades estabelecidas no passo 3. A preempção pode ser evitada com o “
 preemption threshold” do ThreadX.**
