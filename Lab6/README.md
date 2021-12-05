@@ -123,7 +123,43 @@ tx_byte_pool_create
 ```
 
 ![image](https://user-images.githubusercontent.com/48101913/144735628-845e9601-6c39-4a55-8b64-5f98976bafc5.png)
+ 
+ O código abaixo serve para criação da thread 1, para o restante basta repetir os passos abaixos.
+ 
+ ```cpp
+ 
+     /* Allocate the stack for thread 0. */
+   tx_byte_allocate
+   (
+      &byte_pool_0,              // Address of block pool
+      &pointer,                  // Recieve the address of stack
+      STACK_SIZE,                // The size requested
+      TX_NO_WAIT                 // Create the region immediately
+   );
 
+   
+   // Attemp to create until create
+   do
+   {
+      status = tx_thread_create
+      (
+         &thread_0,              // Pointer to a thread control block.
+         "thread 0",             // Pointer to the name of the thread
+         thread_led_1,           // Thread function
+         30,                     // A 32-bit value that is passed to the thread's entry function when it first executes
+                                 // in this case we'll pass the value that we want thread execute
+         pointer,                // Pointer to stack
+         STACK_SIZE,             // Size of its own stack
+         1,                      // Priority
+         1,                      // Preempt threhold
+         TX_NO_TIME_SLICE,       // Time quantum
+         TX_AUTO_START           // Start immediately
+      );
+   } while (status =! TX_SUCCESS);
+ 
+ 
+ 
+ ```
 
 
 # Referências
