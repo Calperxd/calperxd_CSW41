@@ -14,7 +14,7 @@ Criar um conjunto de 3 tarefas com temporizaçõe conhecidas. Experimentando var
 
 #### O Projeto
 Basicamente o fluxo abaixo representa como nossa função deve funcionar 
-```c
+```cpp
 
 /* Pickup the current system time, in timer-ticks. */
 ULONG time_before;
