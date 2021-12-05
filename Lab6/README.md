@@ -9,10 +9,10 @@
 
 # Lab6
 
-#### Introdução
+### Introdução
 Criar um conjunto de 3 tarefas com temporizaçõe conhecidas. Experimentando variaçõe de algoritmos de escalonamento disponível no ThreadX.
 
-#### O Projeto
+### O Projeto
 Basicamente o algoritmo para medir o tempo de execução está descrito logo abaixo.
 
 ```cpp
@@ -63,7 +63,7 @@ UINT temp1, temp2, diff, result;
 
 Note que apesar de ser um código extremamente simples, é interessante entender a sutileza de diferença entre um RTOS e um OS comum, que quando chamamos a função sleep e passamos qualquer tempo como parâmetro ela dorme pelo tempo e retorna o tempo decorrido, entretando, observe que ela possui dois if's esses if's apenas deixam o retorno positivo, negligenciando uma característica das características relevantes em RTOS, que é atender o **DEADLINE** , por isso deve-se evitar o uso de sleep quando o tempo for uma variável crucial.
 
-#### Fluxo de desenvolvimento
+### Fluxo de desenvolvimento
 
 ![image](https://user-images.githubusercontent.com/48101913/144736287-016db7a7-50b7-4e0b-8b47-b5aeedfe216f.png)
 
@@ -171,7 +171,10 @@ https://user-images.githubusercontent.com/48101913/144761323-65e16280-ab2f-4d11-
 
 
 
-#### Testando escalonamentos
+### Testando escalonamentos
+
+**a) Escalonamento por time-slice de 50 ms. Todas as tarefas com mesma prioridade.**
+
 
 
 
