@@ -16,6 +16,7 @@ Criar um conjunto de 3 tarefas com temporizaçõe conhecidas. Experimentando var
 Basicamente o algoritmo para medir o tempo de execução está descrito logo abaixo.
 
 ```cpp
+
 // Algoritmo de tempo de execução
 /* Pickup the current system time, in timer-ticks. */
 ULONG time_before;
