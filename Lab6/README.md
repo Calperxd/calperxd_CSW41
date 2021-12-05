@@ -31,7 +31,7 @@ time_lapsed = time_after - time_before;
 
 ```
 
-Ele é bem simples pois o ThreadX portado já faz uma interface com o systick da ARM. O interessante do projeto ThreadX é que ele faz várias interfaces para o desenvolvedor, uma interface extremamente interessante é a possibilidade de usar comandos da biblioteca pthreads.h, o ThreadX tem várias funções implementadas o trecho de código abaixo mostra a função sleep() do linux, como ela é implementada no ThreadX(todas as funções do padrão posix podem ser acessadas no diretório utility/rtos_compatibility_layers/posix/posix_sleep.c).
+Ele é bem simples pois o ThreadX portado já faz uma interface com o systick da ARM. Outro ponto interessante do projeto ThreadX é que ele faz várias interfaces para o desenvolvedor, uma interface extremamente interessante é a possibilidade de usar comandos da biblioteca pthreads.h, o ThreadX tem várias funções implementadas o trecho de código abaixo mostra a função sleep() do linux, como ela é implementada no ThreadX(todas as funções do padrão posix podem ser acessadas no diretório utility/rtos_compatibility_layers/posix/posix_sleep.c).
 
 ```cpp
 UINT sleep(ULONG seconds)
