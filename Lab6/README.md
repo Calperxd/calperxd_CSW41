@@ -70,9 +70,42 @@ Note que apesar de ser um código extremamente simples, é interessante entender
 
 Acima é um diagrama que mostra como o projeto será desenvolvido, neste momento iremos descrever detalhadamente o bloco de **tx_application_define()** que irá carregar todas as configurações das threads do nosso projeto.
 
+Para criar uma thread, podemos simplesmente chamar a função **tx_thread_create()** passando os parãmetros corretos e a thread será criada como mostra o trecho de código abaixo disponível em : https://docs.microsoft.com/en-us/azure/rtos/threadx/chapter2
+
+```cpp
+#include "tx_api.h"
+unsigned long my_thread_counter = 0;
+TX_THREAD my_thread;
+main( )
+{
+    /* Enter the ThreadX kernel. */
+    tx_kernel_enter( );
+}
+void tx_application_define(void *first_unused_memory)
+{
+    /* Create my_thread! */
+    tx_thread_create(&my_thread, "My Thread",
+    my_thread_entry, 0x1234, first_unused_memory, 1024,
+    3, 3, TX_NO_TIME_SLICE, TX_AUTO_START);
+}
+void my_thread_entry(ULONG thread_input)
+{
+    /* Enter into a forever loop. */
+    while(1)
+    {
+        /* Increment thread counter. */
+        my_thread_counter++;
+        /* Sleep for 1 tick. */
+        tx_thread_sleep(1);
+    }
+}
+
+```
+
 
 # Referências
 
 1.  Descrição de funções do ThreadX - https://docs.microsoft.com/en-us/azure/rtos/threadx/chapter4#tx_byte_pool_create
 2.  Algoritmo para mensuração do tempo - https://en-support.renesas.com/knowledgeBase/18539139
+3.  Trecho de código criando uma thread https://docs.microsoft.com/en-us/azure/rtos/threadx/chapter2
 
