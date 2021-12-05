@@ -1,0 +1,12 @@
+!SESSION 2021-12-05 04:02:28.169 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_121
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=pt_BR
+Command-line arguments:  -os win32 -ws win32 -arch x86 -data C:\Users\Gabriel Calper\OneDrive\UTFPR\9 semestre\Sistemas-Embarcados-CSW41\calperxd_CSW41
+
+!ENTRY com.iar.cdt.arm.toolchain.cmsis.adapter 1 0 2021-12-05 04:02:35.690
+!MESSAGE Using CMSIS pack repositories: http://links.iar.com/cmsis/pack/
+
+!ENTRY com.iar.cmsismanager.product 1 0 2021-12-05 04:02:42.498
+!MESSAGE CMSIS Agent interface registered with service registry at ServiceLocation(host:\\.\pipe\iar-cspy-cpp-binary-com.iar.thrift.service.registry-4c5140ff-d5c5-4378-8325-573f5a1cb69f-1, port:0, protocol:Binary, transport:Pipe)

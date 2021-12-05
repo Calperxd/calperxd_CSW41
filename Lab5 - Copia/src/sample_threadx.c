@@ -2,8 +2,12 @@
    threads of different priorities, using a message queue, semaphore, mutex, event flags group, 
    byte pool, and block pool. Please refer to Chapter 6 of the ThreadX User Guide for a complete
    description of this demonstration.  */
-
+#include <stdint.h>
+#include <stdbool.h>
 #include "tx_api.h"
+#include "inc/hw_memmap.h"
+#include "driverlib/gpio.h"
+#include "driverlib/sysctl.h"
 
 #define DEMO_STACK_SIZE         1024
 #define DEMO_BYTE_POOL_SIZE     9120
@@ -64,17 +68,32 @@ void    thread_3_and_4_entry(ULONG thread_input);
 void    thread_5_entry(ULONG thread_input);
 void    thread_6_and_7_entry(ULONG thread_input);
 
+void led_setup(void)
+{
+     
+  
+    //
+    // Enable the GPIO port that is used for the on-board LED.
+    //
+    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPION);
 
-/* Define main entry point.  */
+    //
+    // Check if the peripheral access is enabled.
+    //
+    while(!SysCtlPeripheralReady(SYSCTL_PERIPH_GPION))
+    {
+    }
+
+    //
+    // Enable the GPIO pin for the LED (PN0).  Set the direction as output, and
+    // enable the GPIO pin for digital function.
+    //
+    GPIOPinTypeGPIOOutput(GPIO_PORTN_BASE, GPIO_PIN_0);
+}
 
 int main()
 {
-    
-    /* Please refer to Chapter 6 of the ThreadX User Guide for a complete
-       description of this demonstration.  */
-
-
-    /* Enter the ThreadX kernel.  */
+    led_setup();
     tx_kernel_enter();
 }
 
@@ -196,26 +215,18 @@ CHAR    *pointer = TX_NULL;
 
 void    thread_0_entry(ULONG thread_input)
 {
-
-UINT    status;
-
-
-    /* This thread simply sits in while-forever-sleep loop.  */
+    uint32_t ui32Loop;
     while(1)
     {
-
-        /* Increment the thread counter.  */
-        thread_0_counter++;
-
-        /* Sleep for 10 ticks.  */
-        tx_thread_sleep(10);
-
-        /* Set event flag 0 to wakeup thread 5.  */
-        status =  tx_event_flags_set(&event_flags_0, 0x1, TX_OR);
-
-        /* Check status.  */
-        if (status != TX_SUCCESS)
-            break;
+        GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_0, GPIO_PIN_0);
+        for(ui32Loop = 0; ui32Loop < 200000; ui32Loop++)
+        {
+        }
+        GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_0, 0x0);
+        for(ui32Loop = 0; ui32Loop < 200000; ui32Loop++)
+        {
+        }
+    
     }
 }
 

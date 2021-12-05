@@ -2845,7 +2845,7 @@
             <name>$PROJ_DIR$\src\cstartup_M.s</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\src\main.c</name>
+            <name>$PROJ_DIR$\src\sample_threadx.c</name>
         </file>
         <file>
             <name>$PROJ_DIR$\src\tx_initialize_low_level.s</name>

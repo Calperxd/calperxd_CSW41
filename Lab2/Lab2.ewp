@@ -2105,7 +2105,13 @@
         <name>$PROJ_DIR$\Lab2_src\main.cpp</name>
     </file>
     <file>
+        <name>$PROJ_DIR$\main.cpp</name>
+    </file>
+    <file>
         <name>$PROJ_DIR$\Lab2_src\startup_ewarm.c</name>
+    </file>
+    <file>
+        <name>$PROJ_DIR$\startup_ewarm.c</name>
     </file>
     <file>
         <name>$PROJ_DIR$\Lab2_src\system_TM4C1294.c</name>
