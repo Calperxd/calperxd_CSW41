@@ -161,7 +161,7 @@ tx_byte_pool_create
 }
  
  ```
-Quando configurado as 3 Threads para piscar os leds PN0,PN1 e PF4 com **TX_NO_TIME_SLICE**, **Threshold 1**, **Priority 1** e **TX_AUTO_START** temos a impressão que as threads estão sendo executadas paralelamente. Essa velocidade de troca de contexto pode ser alterada no **tx_api.h** por default ela está em 10ms que é um valor adequado para cada tick do sistema operacional, mas caso seja necessário você pode alterar ele para 10 e ficará 1ms de tick no sistema operacional.
+Quando configurado as 3 Threads para piscar os leds PN0,PN1 e PF4 com **TX_NO_TIME_SLICE**, **Threshold 1**, **Priority 1** e **TX_AUTO_START** temos a impressão que as threads estão sendo executadas paralelamente. Essa velocidade de troca de contexto pode ser alterada no **tx_api.h** por default ela está em 10ms que é um valor adequado para cada tick do sistema operacional, mas caso seja necessário você pode alterar ele para 10 e ficará 1ms de tick no sistema operacional. Outro ponto importante é que os tempos das threads foram feitos com **tx_thread_sleep()**  essa função faz a thread sair do estado pronto e desa forma executar a próxima tarefa pronta, esse comportamento era esperado. O código desse lab na tentativa de evitar que a thread saia do estado "pronto" usaremos loops de for que adicionam uma variável e veremos o comportamento dos escalomentos.
 
 
 
