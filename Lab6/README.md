@@ -65,7 +65,8 @@ Note que apesar de ser um código extremamente simples, é interessante entender
 
 #### Fluxo de desenvolvimento
 
-![image](https://user-images.githubusercontent.com/48101913/144734281-a0885d43-e6a1-4395-a9cd-0df8ef86247f.png)
+![image](https://user-images.githubusercontent.com/48101913/144735655-e5911f9a-b07c-4780-8f3b-00e4dbcc290f.png)
+
 
 
 Acima é um diagrama que mostra como o projeto será desenvolvido, neste momento iremos descrever detalhadamente o bloco de **tx_application_define()** que irá carregar todas as configurações das threads do nosso projeto.
