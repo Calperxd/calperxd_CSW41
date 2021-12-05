@@ -218,7 +218,11 @@ https://user-images.githubusercontent.com/48101913/144763732-8b4f9c65-72aa-457b-
 **b) Escalonamento sem time-slice e sem preempção. Prioridades estabelecidas no passo 3. A preempção pode ser evitada com o “
 preemption threshold” do ThreadX.**
 
-
+|  Thread  	| Before 	| After 	|  Time  	|
+|:--------:	|:------:	|:-----:	|:------:	|
+| Thread 1 	|    0   	|  3370 	| 3,37 s 	|
+| Thread 2 	|  3370  	|  6741 	| 3,37 s 	|
+| Thread 3 	|  6741  	| 10111 	| 3,37 s 	|
 
 
 # Referências
