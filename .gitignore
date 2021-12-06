@@ -22,6 +22,8 @@
 *.lib
 # Executables
 *.exe
+# zipfiles
+*.zip
 *.out
 *.app
 Debug
