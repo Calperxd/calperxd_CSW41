@@ -9,10 +9,10 @@
 
 # Lab6
 
-#### Introdução
+### Introdução
 Criar um conjunto de 3 tarefas com temporizaçõe conhecidas. Experimentando variaçõe de algoritmos de escalonamento disponível no ThreadX.
 
-#### O Projeto
+### O Projeto
 Basicamente o algoritmo para medir o tempo de execução está descrito logo abaixo.
 
 ```cpp
@@ -63,7 +63,7 @@ UINT temp1, temp2, diff, result;
 
 Note que apesar de ser um código extremamente simples, é interessante entender a sutileza de diferença entre um RTOS e um OS comum, que quando chamamos a função sleep e passamos qualquer tempo como parâmetro ela dorme pelo tempo e retorna o tempo decorrido, entretando, observe que ela possui dois if's esses if's apenas deixam o retorno positivo, negligenciando uma característica das características relevantes em RTOS, que é atender o **DEADLINE** , por isso deve-se evitar o uso de sleep quando o tempo for uma variável crucial.
 
-#### Fluxo de desenvolvimento
+### Fluxo de desenvolvimento
 
 ![image](https://user-images.githubusercontent.com/48101913/144736287-016db7a7-50b7-4e0b-8b47-b5aeedfe216f.png)
 
@@ -160,9 +160,75 @@ tx_byte_pool_create
    
 }
  
- 
- 
  ```
+Quando configurado as 3 Threads para piscar os leds PN0,PN1 e PF4 com **TX_NO_TIME_SLICE**, **Threshold 1**, **Priority 1** e **TX_AUTO_START** temos a impressão que as threads estão sendo executadas paralelamente. Essa velocidade de troca de contexto pode ser alterada no **tx_api.h** por default ela está em 10ms que é um valor adequado para cada tick do sistema operacional, mas caso seja necessário você pode alterar ele para 10 e ficará 1ms de tick no sistema operacional. Outro ponto importante é que os tempos das threads foram feitos com **tx_thread_sleep()**  essa função faz a thread sair do estado pronto e desa forma executar a próxima tarefa pronta, esse comportamento era esperado. O código desse lab na tentativa de evitar que a thread saia do estado "pronto" usaremos loops de for que adicionam uma variável e veremos o comportamento dos escalomentos.
+
+
+
+
+
+https://user-images.githubusercontent.com/48101913/144761323-65e16280-ab2f-4d11-847f-6309fd94fe99.mp4
+
+
+
+### Testando escalonamentos
+
+**a) Escalonamento por time-slice de 50 ms. Todas as tarefas com mesma prioridade.**
+
+Para esse teste os trechos de códigos referente a interrupção do sistick foram alterados para 1ms **tx_initialize_low_level**.
+```assembly
+
+    EXTERN  _tx_thread_system_stack_ptr
+    EXTERN  _tx_initialize_unused_memory
+    EXTERN  _tx_timer_interrupt
+    EXTERN  __vector_table
+    EXTERN  _tx_execution_isr_enter
+    EXTERN  _tx_execution_isr_exit
+;
+;
+SYSTEM_CLOCK      EQU   25000000
+SYSTICK_CYCLES    EQU   ((SYSTEM_CLOCK / 1000) -1)
+
+    RSEG    FREE_MEM:DATA
+    PUBLIC  __tx_free_memory_start
+__tx_free_memory_start
+    DS32    4
+;
+;
+
+
+```
+
+|  Thread  	| Before 	| After 	|   Time  	|
+|:--------:	|:------:	|:-----:	|:-------:	|
+| Thread 1 	|    0   	| 10125 	| 10,12 s 	|
+| Thread 2 	|    0   	| 10125 	| 10,12 s 	|
+| Thread 3 	|    0   	| 10125 	| 10,12 s 	|
+
+
+ Todas as Threads executaram piscando os LEDS.
+
+
+
+https://user-images.githubusercontent.com/48101913/144763732-8b4f9c65-72aa-457b-a733-0cf48e0ee6fa.mp4
+
+
+
+
+**b) Escalonamento sem time-slice e sem preempção. Prioridades estabelecidas no passo 3. A preempção pode ser evitada com o “
+preemption threshold” do ThreadX.**
+
+|  Thread  	| Before 	| After 	|  Time  	|
+|:--------:	|:------:	|:-----:	|:------:	|
+| Thread 1 	|    0   	|  3370 	| 3,37 s 	|
+| Thread 2 	|  3370  	|  6741 	| 3,37 s 	|
+| Thread 3 	|  6741  	| 10111 	| 3,37 s 	|
+
+
+
+https://user-images.githubusercontent.com/48101913/144765713-514653c9-46ba-4528-92d6-40c35ded3c74.mp4
+
+
 
 
 # Referências
@@ -170,4 +236,5 @@ tx_byte_pool_create
 1.  Descrição de funções do ThreadX - https://docs.microsoft.com/en-us/azure/rtos/threadx/chapter4#tx_byte_pool_create
 2.  Algoritmo para mensuração do tempo - https://en-support.renesas.com/knowledgeBase/18539139
 3.  Trecho de código criando uma thread https://docs.microsoft.com/en-us/azure/rtos/threadx/chapter2
+4.  Esquemático da Tiva fornecido em aula.
 
