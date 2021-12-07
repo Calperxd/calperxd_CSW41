@@ -403,6 +403,69 @@ https://user-images.githubusercontent.com/48101913/145098020-f7a09d33-1707-42cc-
 | Thread 3 	|  6741  	| 10111 	| 3,37 s 	|
 
 
+**d) Implemente um Mutex compartilhado entre T1 e T3. No início de cada job estas tarefas devem solicitar este mutex e liberá-lo no
+final. Use mutex sem herança de prioridade. Observe o efeito na temporização das tarefas.**
+
+A tarefa que está com o controle do LED esperou o recurso ser liberado para poder executar, conforme previsto
+
+```cpp
+
+/*
+Configuração do mutex 
+status = tx_mutex_create(&my_mutex,"my_mutex_name", TX_NO_INHERIT);
+
+*/
+// O tick foi alterado
+
+   status = tx_thread_create
+   (
+      &thread1,               // Pointer to a thread control block.
+      "thread 1",             // Pointer to the name of the thread
+      thread_led_1,           // Thread function
+      30,                     // A 32-bit value that is passed to the thread's entry function when it first executes
+                              // in this case we'll pass the value that we want thread execute
+      pointer,                // Pointer to stack
+      STACK_SIZE,             // Size of its own stack
+      1,                      // Priority
+      3,                      // Preempt threhold
+      50,       // Time quantum
+      TX_AUTO_START           // Start immediately
+   );
+
+   status = tx_thread_create
+   (
+      &thread2,               // Pointer to a thread control block.
+      "thread 2",             // Pointer to the name of the thread
+      thread_led_2,           // Thread function
+      30,                     // A 32-bit value that is passed to the thread's entry function when it first executes
+                              // in this case we'll pass the value that we want thread execute
+      pointer,                // Pointer to stack
+      STACK_SIZE,             // Size of its own stack
+      1,                      // Priority
+      1,                      // Preempt threhold
+      50,                       // Time quantum
+      TX_AUTO_START           // Start immediately
+   );
+
+   status = tx_thread_create
+   (
+      &thread3,               // Pointer to a thread control block.
+      "thread 3",             // Pointer to the name of the thread
+      thread_led_3,           // Thread function
+      30,                     // A 32-bit value that is passed to the thread's entry function when it first executes
+                              // in this case we'll pass the value that we want thread execute
+      pointer,                // Pointer to stack
+      STACK_SIZE,             // Size of its own stack
+      1,                      // Priority
+      1,                      // Preempt threhold
+      50,       // Time quantum
+      TX_AUTO_START           // Start immediately
+   );
+
+```
+
+
+
 # Referências
 
 1.  Descrição de funções do ThreadX - https://docs.microsoft.com/en-us/azure/rtos/threadx/chapter4#tx_byte_pool_create
