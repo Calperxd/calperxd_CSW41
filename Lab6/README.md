@@ -334,7 +334,7 @@ Para esse escalonamento é esperado que ele execute 1 thread por vez, uma vez qu
 https://user-images.githubusercontent.com/48101913/144765713-514653c9-46ba-4528-92d6-40c35ded3c74.mp4
 
 
-c) Escalonamento preemptivo por prioridade.
+**c) Escalonamento preemptivo por prioridade.**
 
 
 # Referências
