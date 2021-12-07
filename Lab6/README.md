@@ -319,7 +319,6 @@ preemption threshold” do ThreadX.**
    );
 
 
-   // Attemp to create
    status = tx_thread_create
    (
       &thread3,               // Pointer to a thread control block.
@@ -329,11 +328,12 @@ preemption threshold” do ThreadX.**
                               // in this case we'll pass the value that we want thread execute
       pointer,                // Pointer to stack
       STACK_SIZE,             // Size of its own stack
-      1,                      // Priority
-      1,                      // Preempt threhold
-      50,       // Time quantum
+      3,                      // Priority
+      3,                      // Preempt threhold
+      TX_NO_TIME_SLICE,       // Time quantum
       TX_AUTO_START           // Start immediately
    );
+   
 
 ```
 
