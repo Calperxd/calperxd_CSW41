@@ -249,8 +249,6 @@ __tx_free_memory_start
     DS32    4
 ;
 ;
-
-
 ```
 
 |  Thread  	| Before 	| After 	|   Time  	|
@@ -271,6 +269,74 @@ https://user-images.githubusercontent.com/48101913/144763732-8b4f9c65-72aa-457b-
 
 **b) Escalonamento sem time-slice e sem preempção. Prioridades estabelecidas no passo 3. A preempção pode ser evitada com o “
 preemption threshold” do ThreadX.**
+
+```cpp
+// O tick foi alterado
+
+   status = tx_thread_create
+   (
+      &thread1,               // Pointer to a thread control block.
+      "thread 1",             // Pointer to the name of the thread
+      thread_led_1,           // Thread function
+      30,                     // A 32-bit value that is passed to the thread's entry function when it first executes
+                              // in this case we'll pass the value that we want thread execute
+      pointer,                // Pointer to stack
+      STACK_SIZE,             // Size of its own stack
+      1,                      // Priority
+      1,                      // Preempt threhold
+      TX_NO_TIME_SLICE,       // Time quantum
+      TX_AUTO_START           // Start immediately
+   );
+
+   status = tx_thread_create
+   (
+      &thread2,               // Pointer to a thread control block.
+      "thread 2",             // Pointer to the name of the thread
+      thread_led_2,           // Thread function
+      30,                     // A 32-bit value that is passed to the thread's entry function when it first executes
+                              // in this case we'll pass the value that we want thread execute
+      pointer,                // Pointer to stack
+      STACK_SIZE,             // Size of its own stack
+      2,                      // Priority
+      2,                      // Preempt threhold
+      TX_NO_TIME_SLICE,                       // Time quantum
+      TX_AUTO_START           // Start immediately
+   );
+
+   status = tx_thread_create
+   (
+      &thread3,               // Pointer to a thread control block.
+      "thread 3",             // Pointer to the name of the thread
+      thread_led_3,           // Thread function
+      30,                     // A 32-bit value that is passed to the thread's entry function when it first executes
+                              // in this case we'll pass the value that we want thread execute
+      pointer,                // Pointer to stack
+      STACK_SIZE,             // Size of its own stack
+      3,                      // Priority
+      3,                      // Preempt threhold
+      TX_NO_TIME_SLICE,       // Time quantum
+      TX_AUTO_START           // Start immediately
+   );
+
+
+   // Attemp to create
+   status = tx_thread_create
+   (
+      &thread3,               // Pointer to a thread control block.
+      "thread 3",             // Pointer to the name of the thread
+      thread_led_3,           // Thread function
+      30,                     // A 32-bit value that is passed to the thread's entry function when it first executes
+                              // in this case we'll pass the value that we want thread execute
+      pointer,                // Pointer to stack
+      STACK_SIZE,             // Size of its own stack
+      1,                      // Priority
+      1,                      // Preempt threhold
+      50,       // Time quantum
+      TX_AUTO_START           // Start immediately
+   );
+
+```
+
 
 Para esse escalonamento é esperado que ele execute 1 thread por vez, uma vez que todas as threads possuem threshold diferente.
 
