@@ -409,4 +409,4 @@ https://user-images.githubusercontent.com/48101913/145098020-f7a09d33-1707-42cc-
 2.  Algoritmo para mensuração do tempo - https://en-support.renesas.com/knowledgeBase/18539139
 3.  Trecho de código criando uma thread https://docs.microsoft.com/en-us/azure/rtos/threadx/chapter2
 4.  Esquemático da Tiva fornecido em aula.
-
+5.  Material IF Gerencia de processador https://intranet.ifs.ifsuldeminas.edu.br/kleber.rezende/anteriores/2sem2015/2Redes/FSO_slides_07_Ger%C3%AAncia%20da%20CPU.pdf
