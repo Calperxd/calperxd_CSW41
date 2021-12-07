@@ -318,23 +318,6 @@ preemption threshold” do ThreadX.**
       TX_AUTO_START           // Start immediately
    );
 
-
-   status = tx_thread_create
-   (
-      &thread3,               // Pointer to a thread control block.
-      "thread 3",             // Pointer to the name of the thread
-      thread_led_3,           // Thread function
-      30,                     // A 32-bit value that is passed to the thread's entry function when it first executes
-                              // in this case we'll pass the value that we want thread execute
-      pointer,                // Pointer to stack
-      STACK_SIZE,             // Size of its own stack
-      3,                      // Priority
-      3,                      // Preempt threhold
-      TX_NO_TIME_SLICE,       // Time quantum
-      TX_AUTO_START           // Start immediately
-   );
-   
-
 ```
 
 
