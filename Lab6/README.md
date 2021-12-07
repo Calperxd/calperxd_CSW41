@@ -336,6 +336,9 @@ https://user-images.githubusercontent.com/48101913/144765713-514653c9-46ba-4528-
 
 **c) Escalonamento preemptivo por prioridade.**
 
+Uma tarefa executou por vez.
+
+
 ```cpp
 // O tick foi alterado
 
@@ -385,6 +388,19 @@ https://user-images.githubusercontent.com/48101913/144765713-514653c9-46ba-4528-
    );
 
 ```
+Foto ilustrativa do que deve acontecer
+
+![image](https://user-images.githubusercontent.com/48101913/145097555-54d9c3fd-f631-4e73-b8fc-bfc57f963a00.png)
+
+
+
+https://user-images.githubusercontent.com/48101913/145098020-f7a09d33-1707-42cc-afee-0a3fe876a7ee.mp4
+
+|  Thread  	| Before 	| After 	|  Time  	|
+|:--------:	|:------:	|:-----:	|:------:	|
+| Thread 1 	|    0   	|  3370 	| 3,37 s 	|
+| Thread 2 	|  3370  	|  6741 	| 3,37 s 	|
+| Thread 3 	|  6741  	| 10111 	| 3,37 s 	|
 
 
 # Referências
