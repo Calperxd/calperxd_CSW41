@@ -469,9 +469,9 @@ https://user-images.githubusercontent.com/48101913/145118346-3ae73b43-4229-410a-
 
 |  Thread  	| Before 	| After 	|  Time  	|
 |:--------:	|:------:	|:-----:	|:------:	|
-| Thread 1 	|    50   	|  6734 	| 3,37 s 	|
+| Thread 1 	|    50   	|  6734 	| 6,73 s 	|
 | Thread 2 	|    50    	|  10114 	| 3,37 s 	|
-| Thread 3 	|    50  	|  6855  	| 3,37 s 	|
+| Thread 3 	|    50  	|  6855  	| 6,85 s 	|
 
 
 # Referências
