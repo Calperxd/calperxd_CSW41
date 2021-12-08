@@ -12,6 +12,11 @@
 
 UCHAR                   byte_pool_memory[BYTE_POOL_SIZE];
 
+UINT thread_shared_counter = 0;
+
+//Mutex
+ TX_MUTEX my_mutex;
+
 // TCB for each thread
 TX_THREAD               thread1;
 TX_THREAD               thread2;
@@ -58,6 +63,7 @@ void    tx_application_define(void *first_unused_memory)
    // This pointer is used to store the address requested
    // by the user to the kernel, where is the stack .
    CHAR    *pointer = TX_NULL;
+   status = tx_mutex_create(&my_mutex,"my_mutex_name", TX_INHERIT);
    
    status = tx_byte_pool_create
    (
@@ -66,6 +72,10 @@ void    tx_application_define(void *first_unused_memory)
       byte_pool_memory,
       BYTE_POOL_SIZE
    );
+   
+   
+   
+   
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
    
     // Allocate the stack for thread 1
@@ -90,7 +100,7 @@ void    tx_application_define(void *first_unused_memory)
       STACK_SIZE,             // Size of its own stack
       1,                      // Priority
       1,                      // Preempt threhold
-      TX_NO_TIME_SLICE,       // Time quantum
+      50,       // Time quantum
       TX_AUTO_START           // Start immediately
    );
    
@@ -115,9 +125,9 @@ void    tx_application_define(void *first_unused_memory)
                               // in this case we'll pass the value that we want thread execute
       pointer,                // Pointer to stack
       STACK_SIZE,             // Size of its own stack
-      2,                      // Priority
-      2,                      // Preempt threhold
-      TX_NO_TIME_SLICE,                       // Time quantum
+      1,                      // Priority
+      1,                      // Preempt threhold
+      50,                       // Time quantum
       TX_AUTO_START           // Start immediately
    );
    
@@ -143,9 +153,9 @@ void    tx_application_define(void *first_unused_memory)
                               // in this case we'll pass the value that we want thread execute
       pointer,                // Pointer to stack
       STACK_SIZE,             // Size of its own stack
-      3,                      // Priority
-      3,                      // Preempt threhold
-      TX_NO_TIME_SLICE,       // Time quantum
+      1,                      // Priority
+      1,                      // Preempt threhold
+      50,       // Time quantum
       TX_AUTO_START           // Start immediately
    );
    
@@ -170,6 +180,8 @@ void thread_led_1(ULONG thread_input)
    time_before = tx_time_get();
    while(ui32Loop < thread_input)
    {
+      status = tx_mutex_get(&my_mutex, TX_WAIT_FOREVER);
+      thread_shared_counter++;
       for(blink = 0; blink < 200000; blink++)
       {
       }
@@ -179,6 +191,7 @@ void thread_led_1(ULONG thread_input)
       }
       GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_0, 0x0);
       ui32Loop++;
+      status = tx_mutex_put(&my_mutex);
    }
    time_after = tx_time_get();
    time_lapsed = time_after - time_before;
@@ -224,6 +237,8 @@ void thread_led_3(ULONG thread_input)
    time_before = tx_time_get();
    while(ui32Loop < thread_input)
    {
+      status = tx_mutex_get(&my_mutex, TX_WAIT_FOREVER);
+      thread_shared_counter++;
       for(blink = 0; blink < 200000; blink++)
       {
       }
@@ -233,6 +248,7 @@ void thread_led_3(ULONG thread_input)
       }
       GPIOPinWrite(GPIO_PORTF_AHB_BASE, GPIO_PIN_4, 0x0);
       ui32Loop++;
+      status = tx_mutex_get(&my_mutex, TX_WAIT_FOREVER);
    }
    time_after = tx_time_get();
    time_lapsed = time_after - time_before;
