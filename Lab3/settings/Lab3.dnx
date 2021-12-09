@@ -55,13 +55,13 @@
     <LmiFtdiDriver>
         <LMIFTDIserialNo>0F00BE93</LMIFTDIserialNo>
         <LMIFTDIfoundProbes />
-        <LeaveTargetRunning>_ 0</LeaveTargetRunning>
-        <CStepIntDis>_ 0</CStepIntDis>
         <LmiFtdiResetStyle>0</LmiFtdiResetStyle>
         <LmiFtdiResetStrategy>1</LmiFtdiResetStrategy>
+        <LeaveTargetRunning>_ 0</LeaveTargetRunning>
+        <CStepIntDis>_ 0</CStepIntDis>
     </LmiFtdiDriver>
     <DebugChecksum>
-        <Checksum>2941183012</Checksum>
+        <Checksum>2853610143</Checksum>
     </DebugChecksum>
     <Exceptions>
         <StopOnUncaught>_ 0</StopOnUncaught>
